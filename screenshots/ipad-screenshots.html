@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tablet Remote — iPad Screenshots</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background: #0a0f1a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, sans-serif;
+    padding: 40px 20px;
+    flex-direction: column;
+    gap: 30px;
+}
+h1 { color: white; font-size: 28px; font-weight: 700; }
+.screens-row { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+.screen-wrapper { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.screen-label { color: rgba(255,255,255,0.5); font-size: 12px; }
+.screen-border { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+.screen { font-family: 'Inter', sans-serif; width: 512px; height: 683px; overflow: hidden; position: relative; background: linear-gradient(165deg, #1a2b42 0%, #0d1a2e 40%, #111f38 100%); }
+.headline { position: absolute; top: 36px; left: 0; right: 0; padding: 0 28px; font-size: 48px; font-weight: 900; color: #FFFFFF; line-height: 1.05; letter-spacing: -2px; text-shadow: 0 2px 20px rgba(0,0,0,0.4); z-index: 10; }
+.acc { color: #7AB3E8; }
+.glow { position: absolute; border-radius: 50%; pointer-events: none; }
+.ipad { position: absolute; left: 50%; transform: translateX(-50%); width: 330px; height: 440px; background: #F2F2F7; border-radius: 24px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 0 0 3px rgba(255,255,255,0.1), 0 0 0 5px rgba(0,0,0,0.2), 0 28px 60px rgba(0,0,0,0.55); overflow: hidden; display: flex; flex-direction: column; }
+.ipad-home { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: rgba(60,60,80,0.25); border-radius: 2px; z-index: 20; }
+.sbar { height: 30px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 14px 5px; background: #FFFFFF; position: relative; z-index: 15; }
+.sbar-time { font-size: 8px; font-weight: 700; color: #1A2B42; }
+.sbar-right { display: flex; gap: 3px; align-items: center; }
+.app-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #F0F4F8; }
+.navbar { background: #FFFFFF; border-bottom: 0.5px solid #E0E4EA; padding: 7px 14px 7px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.nav-title { font-size: 12px; font-weight: 700; color: #1A2B42; }
+.nav-btn { font-size: 9px; font-weight: 600; color: #2E5499; background: #EEF3FF; border-radius: 8px; padding: 4px 8px; }
+.card { margin: 7px 10px 0; background: #FFFFFF; border-radius: 13px; padding: 9px 12px; flex-shrink: 0; }
+.card-label { font-size: 6.5px; font-weight: 700; color: #8E8E93; letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 4px; }
+.card-title { font-size: 12px; font-weight: 700; color: #1A2B42; }
+.accent-card { margin: 7px 10px 0; background: linear-gradient(135deg, #2E5499, #1a3a7a); border-radius: 13px; padding: 10px 13px; flex-shrink: 0; color: white; }
+.tabbar { margin-top: auto; display: flex; justify-content: space-around; align-items: center; padding: 6px 0 10px; background: #FFFFFF; border-top: 0.5px solid #E0E4EA; flex-shrink: 0; }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.tab-lbl { font-size: 6px; color: #8E8E93; }
+.tab-lbl.active { color: #2E5499; }
+.tab-dot { width: 4px; height: 4px; border-radius: 50%; background: #2E5499; }
+.tab-dot-h { width: 4px; height: 4px; }
+.brand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin: 7px 10px 0; flex-shrink: 0; }
+.brand-cell { background: #FFFFFF; border-radius: 10px; padding: 8px 5px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.brand-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.brand-name { font-size: 7px; font-weight: 600; color: #1A2B42; text-align: center; }
+.brand-protocol { font-size: 5.5px; color: #8E8E93; text-align: center; }
+.device-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 0.5px solid #F0F4F8; }
+.device-row:last-child { border-bottom: none; }
+.device-icon { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #2E5499, #1a3a7a); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
+.device-info { flex: 1; }
+.device-name { font-size: 9px; font-weight: 700; color: #1A2B42; }
+.device-ip { font-size: 7px; color: #8E8E93; margin-top: 1px; }
+.device-badge { font-size: 6px; font-weight: 700; padding: 3px 6px; border-radius: 6px; background: #EEF8EE; color: #28A745; }
+.device-badge.connecting { background: #FFF8EE; color: #FF9500; }
+.scan-bar { margin: 7px 10px 0; background: #FFFFFF; border-radius: 13px; padding: 9px 12px; flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
+.scan-dot { width: 8px; height: 8px; border-radius: 50%; background: #28A745; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(40,167,69,0.2); }
+.scan-text { font-size: 8px; font-weight: 600; color: #1A2B42; }
+.scan-sub { font-size: 7px; color: #8E8E93; }
+.touchpad-surface { margin: 7px 10px 0; background: linear-gradient(135deg, #1A2B42 0%, #0d1a2e 100%); border-radius: 16px; height: 150px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.touchpad-hint { font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.4); text-align: center; }
+.touchpad-finger { position: absolute; width: 24px; height: 24px; border-radius: 50%; background: rgba(90,160,255,0.6); border: 2px solid rgba(90,160,255,0.9); top: 55%; left: 52%; }
+.btn-row { margin: 6px 10px 0; display: flex; gap: 5px; flex-shrink: 0; }
+.ctrl-btn { flex: 1; background: #FFFFFF; border-radius: 10px; padding: 8px 6px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.ctrl-btn-icon { font-size: 14px; }
+.ctrl-btn-lbl { font-size: 7px; font-weight: 600; color: #1A2B42; }
+.slider-card { margin: 6px 10px 0; background: #FFFFFF; border-radius: 13px; padding: 9px 12px; flex-shrink: 0; }
+.slider-label { font-size: 7px; font-weight: 700; color: #8E8E93; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; display: flex; justify-content: space-between; }
+.slider-track { height: 4px; background: #E0E4EA; border-radius: 2px; position: relative; }
+.slider-fill { height: 4px; background: linear-gradient(90deg, #2E5499, #5B8DD9); border-radius: 2px; width: 55%; }
+.slider-thumb { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #2E5499; top: -4px; left: calc(55% - 6px); box-shadow: 0 2px 4px rgba(46,84,153,0.5); }
+.keyboard-area { margin: 7px 10px 0; background: #D1D5DB; border-radius: 12px; padding: 8px 6px; flex-shrink: 0; }
+.kb-input-row { background: white; border-radius: 8px; padding: 6px 10px; margin-bottom: 7px; display: flex; align-items: center; justify-content: space-between; }
+.kb-input-text { font-size: 9px; color: #1A2B42; font-weight: 500; }
+.kb-send { background: #2E5499; color: white; font-size: 7px; font-weight: 700; border-radius: 6px; padding: 3px 8px; }
+.kb-row { display: flex; justify-content: center; gap: 3px; margin-bottom: 3px; }
+.kb-key { background: white; border-radius: 5px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: #1A2B42; box-shadow: 0 1px 0 rgba(0,0,0,0.25); flex-shrink: 0; }
+.kb-key.wide { width: 40px; font-size: 7.5px; }
+.kb-key.space { width: 120px; font-size: 7.5px; }
+.kb-key.accent { background: #2E5499; color: white; }
+#screen1 { background: linear-gradient(170deg, #1B2D4A 0%, #0D1B30 35%, #0A1525 70%, #0D1B30 100%); }
+</style>
+</head>
+<body>
+<h1>Tablet Remote — iPad Screenshots</h1>
+<div class="screens-row">
+
+<!-- SCREEN 1: HERO -->
+<div class="screen-wrapper">
+<div class="screen-border"><div class="screen" id="screen1">
+<div class="glow" style="top:-80px;left:-60px;width:300px;height:300px;background:radial-gradient(ellipse,rgba(46,84,153,0.35) 0%,transparent 70%);"></div>
+<div class="glow" style="bottom:0;right:-40px;width:250px;height:250px;background:radial-gradient(ellipse,rgba(90,160,255,0.2) 0%,transparent 70%);"></div>
+<div class="headline" style="top:42px;font-size:44px;">Turn Your iPad<br>Into a Smart<br><span class="acc">TV Remote.</span></div>
+<img src="https://cppflow.com/assets/gen_20260410_214020_41cfcf86.png" style="position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:480px;height:auto;object-fit:contain;">
+<div style="position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:center;align-items:center;z-index:10;">
+<div style="display:flex;align-items:center;gap:0;">
+<img src="https://cppflow.com/assets/laurel_left.png" style="height:90px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transform:scaleX(1);opacity:0.85;">
+<div style="display:flex;flex-direction:column;align-items:center;margin:0 -10px;">
+<div style="font-family:'Inter',sans-serif;font-size:30px;font-weight:900;color:#FFFFFF;letter-spacing:-1px;line-height:1;">8 TVs</div>
+<div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:3px;margin-top:2px;">SUPPORTED</div>
+</div>
+<img src="https://cppflow.com/assets/laurel_left.png" style="height:90px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transform:scaleX(-1);opacity:0.85;">
+</div></div>
+</div></div>
+<div class="screen-label">Screen 1 — Hero</div>
+</div>
+
+<!-- SCREEN 2: BRANDS -->
+<div class="screen-wrapper">
+<div class="screen-border"><div class="screen" id="screen2">
+<div class="glow" style="top:-60px;right:-40px;width:240px;height:240px;background:radial-gradient(ellipse,rgba(46,84,153,0.2) 0%,transparent 70%);"></div>
+<div class="headline" style="top:36px;font-size:40px;">Works With<br><span class="acc">Every TV Brand.</span></div>
+<div class="ipad" style="top:168px;">
+<div class="ipad-home"></div>
+<div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-right"><svg width="12" height="8" viewBox="0 0 12 8" fill="#1A2B42"><rect x="0" y="5" width="2" height="3" rx="0.5"/><rect x="3" y="3.5" width="2" height="4.5" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg><svg width="16" height="8" viewBox="0 0 16 8" fill="none"><rect x="0.5" y="0.5" width="13" height="7" rx="1.5" stroke="#1A2B42" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="9" height="5" rx="1" fill="#1A2B42"/></svg></div></div>
+<div class="app-content">
+<div class="navbar"><span class="nav-title">Compatible TVs</span><span class="nav-btn">All 8 Brands</span></div>
+<div class="brand-grid">
+<div class="brand-cell"><div class="brand-icon" style="background:#1428A0;">&#128250;</div><div class="brand-name">Samsung</div><div class="brand-protocol">WebSocket</div></div>
+<div class="brand-cell"><div class="brand-icon" style="background:#A50034;">&#128250;</div><div class="brand-name">LG</div><div class="brand-protocol">WebOS</div></div>
+<div class="brand-cell"><div class="brand-icon" style="background:#003087;">&#128250;</div><div class="brand-name">Sony</div><div class="brand-protocol">IRCC / REST</div></div>
+<div class="brand-cell"><div class="brand-icon" style="background:#6F2DA8;">&#128250;</div><div class="brand-name">Roku</div><div class="brand-protocol">ECP / HTTP</div></div>
+<div class="brand-cell"><div class="brand-icon" style="background:#555555;">&#128250;</div><div class="brand-name">Apple TV</div><div class="brand-protocol">Companion</div></div>
+<div class="brand-cell"><div class="brand-icon" style="background:#E47911;">&#128250;</div><div class="brand-name">Fire TV</div><div class="brand-protocol">ADB</div></div>
+</div>
+<div class="card" style="margin-top:6px;"><div class="card-label">Also supports</div><div style="display:flex;gap:5px;margin-top:2px;"><div style="background:#EEF3FF;border-radius:7px;padding:4px 8px;font-size:7px;font-weight:600;color:#2E5499;">Android TV</div><div style="background:#EEF3FF;border-radius:7px;padding:4px 8px;font-size:7px;font-weight:600;color:#2E5499;">Philips</div><div style="background:#F5F5F5;border-radius:7px;padding:4px 8px;font-size:7px;font-weight:600;color:#8E8E93;">+ more</div></div></div>
+<div class="tabbar">
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2E5499"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-lbl active">Home</span><div class="tab-dot"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span class="tab-lbl">Remote</span><div class="tab-dot-h"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/></svg><span class="tab-lbl">Discover</span><div class="tab-dot-h"></div></div>
+</div>
+</div></div>
+</div></div>
+<div class="screen-label">Screen 2 — Brands</div>
+</div>
+
+<!-- SCREEN 3: DISCOVERY -->
+<div class="screen-wrapper">
+<div class="screen-border"><div class="screen" id="screen3">
+<div class="glow" style="top:-80px;left:-50px;width:260px;height:260px;background:radial-gradient(ellipse,rgba(40,167,69,0.15) 0%,transparent 70%);"></div>
+<div class="headline" style="top:36px;font-size:40px;">Finds Your TV<br><span class="acc">Automatically.</span></div>
+<div class="ipad" style="top:162px;">
+<div class="ipad-home"></div>
+<div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-right"><svg width="12" height="8" viewBox="0 0 12 8" fill="#1A2B42"><rect x="0" y="5" width="2" height="3" rx="0.5"/><rect x="3" y="3.5" width="2" height="4.5" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg><svg width="16" height="8" viewBox="0 0 16 8" fill="none"><rect x="0.5" y="0.5" width="13" height="7" rx="1.5" stroke="#1A2B42" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="9" height="5" rx="1" fill="#1A2B42"/></svg></div></div>
+<div class="app-content">
+<div class="navbar"><span class="nav-title">Find Devices</span><span class="nav-btn" style="color:#28A745;background:#EEF8EE;">Scanning...</span></div>
+<div class="scan-bar"><div class="scan-dot"></div><div><div class="scan-text">Scanning local network</div><div class="scan-sub">192.168.1.0/24 &middot; 3 devices found</div></div></div>
+<div class="card" style="padding:10px 12px;">
+<div class="card-label" style="margin-bottom:6px;">Found Devices</div>
+<div class="device-row"><div class="device-icon">&#128250;</div><div class="device-info"><div class="device-name">Samsung QLED 65"</div><div class="device-ip">192.168.1.42 &middot; WebSocket</div></div><div class="device-badge">Ready</div></div>
+<div class="device-row"><div class="device-icon" style="background:linear-gradient(135deg,#A50034,#7A0026);">&#128250;</div><div class="device-info"><div class="device-name">LG OLED C3</div><div class="device-ip">192.168.1.55 &middot; WebOS</div></div><div class="device-badge">Ready</div></div>
+<div class="device-row"><div class="device-icon" style="background:linear-gradient(135deg,#6F2DA8,#4A1E7A);">&#128250;</div><div class="device-info"><div class="device-name">Roku Express 4K</div><div class="device-ip">192.168.1.71 &middot; ECP</div></div><div class="device-badge connecting">Connecting</div></div>
+</div>
+<div class="tabbar">
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-lbl">Home</span><div class="tab-dot-h"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span class="tab-lbl">Remote</span><div class="tab-dot-h"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2E5499"><circle cx="11" cy="11" r="8"/></svg><span class="tab-lbl active">Discover</span><div class="tab-dot"></div></div>
+</div>
+</div></div>
+</div></div>
+<div class="screen-label">Screen 3 — Discovery</div>
+</div>
+
+<!-- SCREEN 4: TOUCHPAD -->
+<div class="screen-wrapper">
+<div class="screen-border"><div class="screen" id="screen4">
+<div class="glow" style="top:-50px;right:-50px;width:220px;height:220px;background:radial-gradient(ellipse,rgba(90,140,255,0.2) 0%,transparent 70%);"></div>
+<div class="headline" style="top:36px;font-size:38px;">Swipe to Control.<br><span class="acc">Like a Trackpad.</span></div>
+<div class="ipad" style="top:162px;height:445px;">
+<div class="ipad-home"></div>
+<div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-right"><svg width="12" height="8" viewBox="0 0 12 8" fill="#1A2B42"><rect x="0" y="5" width="2" height="3" rx="0.5"/><rect x="3" y="3.5" width="2" height="4.5" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg><svg width="16" height="8" viewBox="0 0 16 8" fill="none"><rect x="0.5" y="0.5" width="13" height="7" rx="1.5" stroke="#1A2B42" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="9" height="5" rx="1" fill="#1A2B42"/></svg></div></div>
+<div class="app-content">
+<div class="navbar"><span class="nav-title">Touchpad</span><span class="nav-btn">Samsung QLED</span></div>
+<div class="touchpad-surface">
+<div style="position:absolute;width:50px;height:2px;background:linear-gradient(90deg,transparent,rgba(90,160,255,0.4));top:calc(55% + 11px);left:35%;"></div>
+<div class="touchpad-finger"></div>
+<div class="touchpad-hint">Drag to move cursor</div>
+</div>
+<div class="btn-row">
+<div class="ctrl-btn"><div class="ctrl-btn-icon">&#128070;</div><div class="ctrl-btn-lbl">Click</div></div>
+<div class="ctrl-btn"><div class="ctrl-btn-icon">&#8617;</div><div class="ctrl-btn-lbl">Back</div></div>
+<div class="ctrl-btn"><div class="ctrl-btn-icon">&#8962;</div><div class="ctrl-btn-lbl">Home</div></div>
+</div>
+<div class="slider-card">
+<div class="slider-label"><span>Sensitivity</span><span style="color:#2E5499;">2.5x</span></div>
+<div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
+</div>
+<div class="tabbar">
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-lbl">Home</span><div class="tab-dot-h"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2E5499"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span class="tab-lbl active">Remote</span><div class="tab-dot"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/></svg><span class="tab-lbl">Discover</span><div class="tab-dot-h"></div></div>
+</div>
+</div></div>
+</div></div>
+<div class="screen-label">Screen 4 — Touchpad</div>
+</div>
+
+<!-- SCREEN 5: KEYBOARD -->
+<div class="screen-wrapper">
+<div class="screen-border"><div class="screen" id="screen5">
+<div class="glow" style="bottom:-40px;left:-40px;width:220px;height:220px;background:radial-gradient(ellipse,rgba(46,84,153,0.2) 0%,transparent 70%);"></div>
+<div class="headline" style="top:36px;font-size:40px;">Type on Your TV.<br><span class="acc">Instantly.</span></div>
+<div class="ipad" style="top:160px;height:448px;">
+<div class="ipad-home"></div>
+<div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-right"><svg width="12" height="8" viewBox="0 0 12 8" fill="#1A2B42"><rect x="0" y="5" width="2" height="3" rx="0.5"/><rect x="3" y="3.5" width="2" height="4.5" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg><svg width="16" height="8" viewBox="0 0 16 8" fill="none"><rect x="0.5" y="0.5" width="13" height="7" rx="1.5" stroke="#1A2B42" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="9" height="5" rx="1" fill="#1A2B42"/></svg></div></div>
+<div class="app-content">
+<div class="navbar"><span class="nav-title">TV Keyboard</span><span class="nav-btn">Samsung QLED</span></div>
+<div class="accent-card" style="margin-top:7px;"><div style="font-size:7px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:3px;">Searching on TV</div><div style="font-size:13px;font-weight:800;color:white;">Stranger Things</div><div style="font-size:7px;color:rgba(255,255,255,0.7);margin-top:2px;">Netflix &middot; 4 seasons</div></div>
+<div class="keyboard-area" style="margin-top:6px;">
+<div class="kb-input-row"><div class="kb-input-text">Stranger Things<span style="color:#2E5499;font-weight:700;">|</span></div><div class="kb-send">Send</div></div>
+<div class="kb-row"><div class="kb-key">Q</div><div class="kb-key">W</div><div class="kb-key">E</div><div class="kb-key">R</div><div class="kb-key">T</div><div class="kb-key">Y</div><div class="kb-key">U</div><div class="kb-key">I</div><div class="kb-key">O</div><div class="kb-key">P</div></div>
+<div class="kb-row"><div class="kb-key">A</div><div class="kb-key">S</div><div class="kb-key">D</div><div class="kb-key">F</div><div class="kb-key">G</div><div class="kb-key">H</div><div class="kb-key">J</div><div class="kb-key">K</div><div class="kb-key">L</div></div>
+<div class="kb-row"><div class="kb-key wide">&#8679;</div><div class="kb-key">Z</div><div class="kb-key">X</div><div class="kb-key">C</div><div class="kb-key">V</div><div class="kb-key">B</div><div class="kb-key">N</div><div class="kb-key">M</div><div class="kb-key wide">&#9003;</div></div>
+<div class="kb-row"><div class="kb-key wide">123</div><div class="kb-key space">space</div><div class="kb-key wide accent">&#9166;</div></div>
+</div>
+<div style="margin:6px 10px 0;display:flex;gap:5px;flex-shrink:0;">
+<div style="flex:1;background:#FFFFFF;border-radius:10px;padding:7px 8px;"><div style="font-size:13px;margin-bottom:2px;">&#9000;</div><div style="font-size:7px;font-weight:700;color:#1A2B42;">Full QWERTY</div></div>
+<div style="flex:1;background:#FFFFFF;border-radius:10px;padding:7px 8px;"><div style="font-size:13px;margin-bottom:2px;">&#9889;</div><div style="font-size:7px;font-weight:700;color:#1A2B42;">Instant Send</div></div>
+<div style="flex:1;background:#FFFFFF;border-radius:10px;padding:7px 8px;"><div style="font-size:13px;margin-bottom:2px;">&#128290;</div><div style="font-size:7px;font-weight:700;color:#1A2B42;">Numbers Too</div></div>
+</div>
+<div class="tabbar">
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-lbl">Home</span><div class="tab-dot-h"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2E5499"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span class="tab-lbl active">Remote</span><div class="tab-dot"></div></div>
+<div class="tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/></svg><span class="tab-lbl">Discover</span><div class="tab-dot-h"></div></div>
+</div>
+</div></div>
+</div></div>
+<div class="screen-label">Screen 5 — Keyboard</div>
+</div>
+
+</div>
+</body>
+</html>
