@@ -1,0 +1,78 @@
+name: TabletRemoteControl
+
+options:
+  bundleIdPrefix: ipad remote control
+  deploymentTarget:
+    iOS: "17.0"
+  swift: "5.9"
+  xcodeVersion: "16.0"
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: 5487HDH2B9
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "2"
+    SUPPORTS_MAC_DESIGNED_FOR_IPAD: NO
+    ENABLE_PREVIEWS: YES
+
+targets:
+  TabletRemoteControl:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: TabletRemoteControl/Sources
+        excludes:
+          - App/Info.plist
+    resources:
+      - path: TabletRemoteControl/Assets.xcassets
+    info:
+      path: TabletRemoteControl/Sources/App/Info.plist
+      properties:
+        CFBundleDisplayName: "Tablet Remote"
+        CFBundleIdentifier: "ipad remote control - ipadremotecontrolapp"
+        CFBundleName: TabletRemoteControl
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        LSRequiresIPhoneOS: YES
+        UIRequiresFullScreen: YES
+        UIDeviceFamily:
+          - 2
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSLocalNetworkUsageDescription: "Tablet Remote needs local network access to find your Smart TV."
+        NSBonjourServices:
+          - _samsungtv._tcp
+          - _webostv._tcp
+          - _googlecast._tcp
+          - _apple-tvremote._tcp
+          - _roku._tcp
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: NO
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+    settings:
+      base:
+        INFOPLIST_FILE: TabletRemoteControl/Sources/App/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: "ipad remote control - ipadremotecontrolapp"
+
+schemes:
+  TabletRemoteControl:
+    build:
+      targets:
+        TabletRemoteControl: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

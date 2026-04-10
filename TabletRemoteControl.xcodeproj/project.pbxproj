@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14DDA5AA418981EE5EBD9F0B /* TVProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555248E94139E703E600226 /* TVProtocol.swift */; };
+		162B48DDCF2C748758767EB9 /* ADBProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8DF0902A2917E1931EF1D1 /* ADBProtocol.swift */; };
+		18264E8A10A0A76310529B2F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB6E59EB9F67ACD3BEED87 /* OnboardingView.swift */; };
+		1CB58BD67FAF4D98F890566B /* TVDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5C942E58A64F4A966BB15 /* TVDevice.swift */; };
+		1F24B755EC834993AD6EDC0F /* TVDiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE3A63596D1B8186A84D78E /* TVDiscoveryService.swift */; };
+		30E21FF7B81CA7CB6950C9C4 /* TVKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12E9FAE333E5A0422A5C /* TVKeyboardView.swift */; };
+		33DBD5262B97F04C97F56A9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB4759D16C8972F7A5B7D9 /* ContentView.swift */; };
+		39F46670AAE4C2FB172C5ECD /* TVConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F56D94CBE14D0C16DA2E37 /* TVConnectionManager.swift */; };
+		43CBFCA0C6FA176E13367CA9 /* LGProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A842FA6009CCE10970EDA /* LGProtocol.swift */; };
+		504227E9294A898B70203654 /* RokuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0A57E2416AFCE61CF10A3 /* RokuProtocol.swift */; };
+		5CD03D3CA8E1F91892726176 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD180D27E1A0CD805484D97 /* AppState.swift */; };
+		6934C3A154ED1C7E4E7A11CA /* TabletRemoteControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */; };
+		7F9E07E39BBCC88379F58DC5 /* SamsungProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716BA9196E4A15DF332F12E /* SamsungProtocol.swift */; };
+		8CF3EC8893CE3873458AFECB /* TVProtocolFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */; };
+		98F688608753CF7F4133CB90 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA321380BDEDF74F71C36B /* DeviceListView.swift */; };
+		A32ECEA255939E61602FC073 /* SonyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D739D67A3729B2349963B /* SonyProtocol.swift */; };
+		C58AA2553118DBECDCD2DF3B /* PhilipsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70405CA96B592D7E99374B1E /* PhilipsProtocol.swift */; };
+		CC271FD4D9AC306FD0556A6D /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD24C4ACB6C058BA2309093 /* RemoteCommand.swift */; };
+		D196124E8E09D6BDB18C0886 /* TVTouchpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */; };
+		E6D9013A4707A6248AA37D80 /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605F3AFDAAB40C71333DD362 /* RemoteControlView.swift */; };
+		EABE228725C5166BA7780FC6 /* AppsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF5FF93FB01DD316F3FE6D /* AppsGridView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02DF12E9FAE333E5A0422A5C /* TVKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVKeyboardView.swift; sourceTree = "<group>"; };
+		0B3D739D67A3729B2349963B /* SonyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonyProtocol.swift; sourceTree = "<group>"; };
+		18B0A57E2416AFCE61CF10A3 /* RokuProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RokuProtocol.swift; sourceTree = "<group>"; };
+		22A5C942E58A64F4A966BB15 /* TVDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDevice.swift; sourceTree = "<group>"; };
+		26AF5FF93FB01DD316F3FE6D /* AppsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGridView.swift; sourceTree = "<group>"; };
+		2716BA9196E4A15DF332F12E /* SamsungProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamsungProtocol.swift; sourceTree = "<group>"; };
+		5BD180D27E1A0CD805484D97 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		5E8DF0902A2917E1931EF1D1 /* ADBProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADBProtocol.swift; sourceTree = "<group>"; };
+		5EFB6E59EB9F67ACD3BEED87 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		605F3AFDAAB40C71333DD362 /* RemoteControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlView.swift; sourceTree = "<group>"; };
+		61AA321380BDEDF74F71C36B /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
+		6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletRemoteControlApp.swift; sourceTree = "<group>"; };
+		70405CA96B592D7E99374B1E /* PhilipsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilipsProtocol.swift; sourceTree = "<group>"; };
+		94EB4759D16C8972F7A5B7D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9AD24C4ACB6C058BA2309093 /* RemoteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommand.swift; sourceTree = "<group>"; };
+		9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTouchpadView.swift; sourceTree = "<group>"; };
+		9F8A842FA6009CCE10970EDA /* LGProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGProtocol.swift; sourceTree = "<group>"; };
+		A555248E94139E703E600226 /* TVProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProtocol.swift; sourceTree = "<group>"; };
+		AAB190AC297ED1C70AC6CA52 /* TabletRemoteControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TabletRemoteControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4F56D94CBE14D0C16DA2E37 /* TVConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVConnectionManager.swift; sourceTree = "<group>"; };
+		CAE3A63596D1B8186A84D78E /* TVDiscoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDiscoveryService.swift; sourceTree = "<group>"; };
+		F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProtocolFactory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		113307E094144635E8023964 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				CAE3A63596D1B8186A84D78E /* TVDiscoveryService.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		1EFEDA34B9BCA4E65662C0C0 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				02DF12E9FAE333E5A0422A5C /* TVKeyboardView.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		2E1EBEB5F69177A87ED78AA1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A555248E94139E703E600226 /* TVProtocol.swift */,
+				81656F946A7E11A61FFA66E3 /* ADB */,
+				87D2C780E3ADD13408F95475 /* LG */,
+				9DE0B29C1E19E1CD12D703FA /* Philips */,
+				EBE2AB537B60C5677C214B3A /* Roku */,
+				9863C377418FCAB8DC452DE2 /* Samsung */,
+				993874263A2C31FD2D64AE30 /* Sony */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3A5574AC944B1B032C3948B6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				90C39918BB9BCDB7EA552754 /* App */,
+				113307E094144635E8023964 /* Discovery */,
+				84BD5904537C07C6E13926FA /* Models */,
+				2E1EBEB5F69177A87ED78AA1 /* Protocols */,
+				9414B5FE2483949C7B1499C3 /* Services */,
+				D42D47344CE35230C91DC75B /* UI */,
+			);
+			name = Sources;
+			path = TabletRemoteControl/Sources;
+			sourceTree = "<group>";
+		};
+		463C9C7FB38996DE5DE294BF /* Touchpad */ = {
+			isa = PBXGroup;
+			children = (
+				9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */,
+			);
+			path = Touchpad;
+			sourceTree = "<group>";
+		};
+		63912685CFF9BA6367C92114 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5EFB6E59EB9F67ACD3BEED87 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		81656F946A7E11A61FFA66E3 /* ADB */ = {
+			isa = PBXGroup;
+			children = (
+				5E8DF0902A2917E1931EF1D1 /* ADBProtocol.swift */,
+			);
+			path = ADB;
+			sourceTree = "<group>";
+		};
+		84BD5904537C07C6E13926FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9AD24C4ACB6C058BA2309093 /* RemoteCommand.swift */,
+				22A5C942E58A64F4A966BB15 /* TVDevice.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		87D2C780E3ADD13408F95475 /* LG */ = {
+			isa = PBXGroup;
+			children = (
+				9F8A842FA6009CCE10970EDA /* LGProtocol.swift */,
+			);
+			path = LG;
+			sourceTree = "<group>";
+		};
+		90C39918BB9BCDB7EA552754 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5BD180D27E1A0CD805484D97 /* AppState.swift */,
+				94EB4759D16C8972F7A5B7D9 /* ContentView.swift */,
+				6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		91C488167162E9FFB0154A66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAB190AC297ED1C70AC6CA52 /* TabletRemoteControl.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9414B5FE2483949C7B1499C3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C4F56D94CBE14D0C16DA2E37 /* TVConnectionManager.swift */,
+				F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9863C377418FCAB8DC452DE2 /* Samsung */ = {
+			isa = PBXGroup;
+			children = (
+				2716BA9196E4A15DF332F12E /* SamsungProtocol.swift */,
+			);
+			path = Samsung;
+			sourceTree = "<group>";
+		};
+		993874263A2C31FD2D64AE30 /* Sony */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D739D67A3729B2349963B /* SonyProtocol.swift */,
+			);
+			path = Sony;
+			sourceTree = "<group>";
+		};
+		9DE0B29C1E19E1CD12D703FA /* Philips */ = {
+			isa = PBXGroup;
+			children = (
+				70405CA96B592D7E99374B1E /* PhilipsProtocol.swift */,
+			);
+			path = Philips;
+			sourceTree = "<group>";
+		};
+		B8CDA23E808BD3F2083C163A /* DeviceList */ = {
+			isa = PBXGroup;
+			children = (
+				61AA321380BDEDF74F71C36B /* DeviceListView.swift */,
+			);
+			path = DeviceList;
+			sourceTree = "<group>";
+		};
+		C2DD1EC0467EB54D05928A7D = {
+			isa = PBXGroup;
+			children = (
+				3A5574AC944B1B032C3948B6 /* Sources */,
+				91C488167162E9FFB0154A66 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D42D47344CE35230C91DC75B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B8CDA23E808BD3F2083C163A /* DeviceList */,
+				1EFEDA34B9BCA4E65662C0C0 /* Keyboard */,
+				63912685CFF9BA6367C92114 /* Onboarding */,
+				DFBFF393408DB517302CEA57 /* Remote */,
+				463C9C7FB38996DE5DE294BF /* Touchpad */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		DFBFF393408DB517302CEA57 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				26AF5FF93FB01DD316F3FE6D /* AppsGridView.swift */,
+				605F3AFDAAB40C71333DD362 /* RemoteControlView.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		EBE2AB537B60C5677C214B3A /* Roku */ = {
+			isa = PBXGroup;
+			children = (
+				18B0A57E2416AFCE61CF10A3 /* RokuProtocol.swift */,
+			);
+			path = Roku;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A57AD4EB4E2878CEE4699BE6 /* TabletRemoteControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0B12A3D48E8EFD4B7083F0B /* Build configuration list for PBXNativeTarget "TabletRemoteControl" */;
+			buildPhases = (
+				65EE0C2AA4147B59216DF069 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TabletRemoteControl;
+			packageProductDependencies = (
+			);
+			productName = TabletRemoteControl;
+			productReference = AAB190AC297ED1C70AC6CA52 /* TabletRemoteControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		77C222047B896C29AF9F4376 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A57AD4EB4E2878CEE4699BE6 = {
+						DevelopmentTeam = 5487HDH2B9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 253F896A7EB25A998A60B8E1 /* Build configuration list for PBXProject "TabletRemoteControl" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C2DD1EC0467EB54D05928A7D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A57AD4EB4E2878CEE4699BE6 /* TabletRemoteControl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65EE0C2AA4147B59216DF069 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				162B48DDCF2C748758767EB9 /* ADBProtocol.swift in Sources */,
+				5CD03D3CA8E1F91892726176 /* AppState.swift in Sources */,
+				EABE228725C5166BA7780FC6 /* AppsGridView.swift in Sources */,
+				33DBD5262B97F04C97F56A9C /* ContentView.swift in Sources */,
+				98F688608753CF7F4133CB90 /* DeviceListView.swift in Sources */,
+				43CBFCA0C6FA176E13367CA9 /* LGProtocol.swift in Sources */,
+				18264E8A10A0A76310529B2F /* OnboardingView.swift in Sources */,
+				C58AA2553118DBECDCD2DF3B /* PhilipsProtocol.swift in Sources */,
+				CC271FD4D9AC306FD0556A6D /* RemoteCommand.swift in Sources */,
+				E6D9013A4707A6248AA37D80 /* RemoteControlView.swift in Sources */,
+				504227E9294A898B70203654 /* RokuProtocol.swift in Sources */,
+				7F9E07E39BBCC88379F58DC5 /* SamsungProtocol.swift in Sources */,
+				A32ECEA255939E61602FC073 /* SonyProtocol.swift in Sources */,
+				39F46670AAE4C2FB172C5ECD /* TVConnectionManager.swift in Sources */,
+				1CB58BD67FAF4D98F890566B /* TVDevice.swift in Sources */,
+				1F24B755EC834993AD6EDC0F /* TVDiscoveryService.swift in Sources */,
+				30E21FF7B81CA7CB6950C9C4 /* TVKeyboardView.swift in Sources */,
+				14DDA5AA418981EE5EBD9F0B /* TVProtocol.swift in Sources */,
+				8CF3EC8893CE3873458AFECB /* TVProtocolFactory.swift in Sources */,
+				D196124E8E09D6BDB18C0886 /* TVTouchpadView.swift in Sources */,
+				6934C3A154ED1C7E4E7A11CA /* TabletRemoteControlApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		108FAF5F8274B90F7C42AB2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = TabletRemoteControl/Sources/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ipad remote control - ipadremotecontrolapp";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		487890E8F96259550E440C7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = TabletRemoteControl/Sources/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ipad remote control - ipadremotecontrolapp";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B01C3D55766D55BE2C71DA60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5487HDH2B9;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		CAC047028FD5D99B977E1090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5487HDH2B9;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		253F896A7EB25A998A60B8E1 /* Build configuration list for PBXProject "TabletRemoteControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAC047028FD5D99B977E1090 /* Debug */,
+				B01C3D55766D55BE2C71DA60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C0B12A3D48E8EFD4B7083F0B /* Build configuration list for PBXNativeTarget "TabletRemoteControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487890E8F96259550E440C7F /* Debug */,
+				108FAF5F8274B90F7C42AB2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 77C222047B896C29AF9F4376 /* Project object */;
+}

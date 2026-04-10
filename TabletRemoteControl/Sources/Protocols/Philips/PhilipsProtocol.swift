@@ -77,7 +77,7 @@ class PhilipsProtocol: NSObject, TVProtocol {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             let body: [String: Any] = ["key": "Digit\(char)"]
             request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-            let (_, _) = try? await URLSession.shared.data(for: request)
+            _ = try? await URLSession.shared.data(for: request)
         }
     }
 
