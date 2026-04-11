@@ -5,26 +5,24 @@ struct AppsGridView: View {
     @State private var apps: [TVApp] = []
     @State private var isLoading = false
 
-    let columns = Array(repeating: GridItem(.adaptive(minimum: 100, maximum: 130), spacing: 16), count: 4)
+    private let columns = [GridItem(.adaptive(minimum: 110, maximum: 140), spacing: 14)]
 
     var body: some View {
         Group {
             if isLoading {
-                VStack {
+                VStack(spacing: 12) {
                     Spacer()
-                    ProgressView()
-                        .tint(.purple)
-                    Text("Loading apps...")
+                    ProgressView().tint(.indigo)
+                    Text("Loading apps…")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.top, 8)
+                        .foregroundStyle(.secondary)
                     Spacer()
                 }
             } else if apps.isEmpty {
                 emptyState
             } else {
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 16) {
+                    LazyVGrid(columns: columns, spacing: 14) {
                         ForEach(apps) { app in
                             AppTile(app: app) {
                                 Task { try? await connectionManager.currentProtocol?.launchApp(app) }
@@ -35,24 +33,16 @@ struct AppsGridView: View {
                 }
             }
         }
+        .background(Color(.systemGroupedBackground))
         .task { await loadApps() }
     }
 
     private var emptyState: some View {
-        VStack(spacing: 12) {
-            Spacer()
-            Image(systemName: "apps.ipad")
-                .font(.system(size: 44))
-                .foregroundColor(.gray.opacity(0.4))
-            Text("No apps available")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            Text("App listing is not supported\nfor this TV model")
-                .font(.caption)
-                .foregroundColor(.gray.opacity(0.6))
-                .multilineTextAlignment(.center)
-            Spacer()
-        }
+        ContentUnavailableView(
+            "No Apps Available",
+            systemImage: "apps.ipad",
+            description: Text("App listing isn't supported for this TV model.")
+        )
     }
 
     private func loadApps() async {
@@ -62,40 +52,71 @@ struct AppsGridView: View {
     }
 }
 
+// MARK: - App Tile
+
 struct AppTile: View {
     let app: TVApp
     let onTap: () -> Void
 
     var body: some View {
         Button(action: onTap) {
-            VStack(spacing: 8) {
-                if let iconURL = app.iconURL {
-                    AsyncImage(url: iconURL) { image in
-                        image.resizable().scaledToFit()
-                    } placeholder: {
-                        Image(systemName: "app.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.purple)
-                    }
-                    .frame(width: 56, height: 56)
-                    .cornerRadius(12)
-                } else {
-                    Image(systemName: "app.fill")
-                        .font(.system(size: 36))
-                        .foregroundColor(.purple)
-                        .frame(width: 56, height: 56)
+            VStack(spacing: 10) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(appBackground(app.name))
+                        .frame(width: 64, height: 64)
+                        .shadow(color: appBackground(app.name).opacity(0.3), radius: 6, y: 3)
+                    Image(systemName: appIcon(app.name))
+                        .font(.system(size: 28, weight: .medium))
+                        .foregroundStyle(.white)
                 }
-
                 Text(app.name)
-                    .font(.caption)
-                    .foregroundColor(.white)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.center)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
             }
-            .padding(12)
-            .background(Color.white.opacity(0.07))
-            .cornerRadius(16)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 16))
+            .shadow(color: .black.opacity(0.06), radius: 6, y: 2)
         }
         .buttonStyle(.plain)
+    }
+
+    private func appIcon(_ name: String) -> String {
+        switch name.lowercased() {
+        case let n where n.contains("netflix"):   return "play.tv.fill"
+        case let n where n.contains("youtube"):   return "play.rectangle.fill"
+        case let n where n.contains("prime"):     return "video.fill"
+        case let n where n.contains("spotify"):   return "music.note"
+        case let n where n.contains("disney"):    return "sparkles.tv.fill"
+        case let n where n.contains("apple tv"),
+             let n where n.contains("appletv"):   return "appletv.fill"
+        case let n where n.contains("hulu"):      return "play.circle.fill"
+        case let n where n.contains("hbo"),
+             let n where n.contains("max"):       return "film.fill"
+        case let n where n.contains("twitch"):    return "gamecontroller.fill"
+        case let n where n.contains("browser"),
+             let n where n.contains("chrome"),
+             let n where n.contains("opera"):     return "globe"
+        default:                                   return "play.square.fill"
+        }
+    }
+
+    private func appBackground(_ name: String) -> Color {
+        switch name.lowercased() {
+        case let n where n.contains("netflix"):   return Color(hex: "E50914")
+        case let n where n.contains("youtube"):   return Color(hex: "FF0000")
+        case let n where n.contains("prime"):     return Color(hex: "00A8E0")
+        case let n where n.contains("spotify"):   return Color(hex: "1DB954")
+        case let n where n.contains("disney"):    return Color(hex: "113CCF")
+        case let n where n.contains("apple tv"),
+             let n where n.contains("appletv"):   return Color(hex: "333333")
+        case let n where n.contains("hulu"):      return Color(hex: "1CE783")
+        case let n where n.contains("hbo"),
+             let n where n.contains("max"):       return Color(hex: "002BE7")
+        case let n where n.contains("twitch"):    return Color(hex: "9146FF")
+        default:                                   return Color.indigo
+        }
     }
 }

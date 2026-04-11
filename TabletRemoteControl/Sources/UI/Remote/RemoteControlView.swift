@@ -29,8 +29,7 @@ struct RemoteControlView: View {
                 if activeTab == .remote {
                     remoteContent
                 } else {
-                    AppsGridView()
-                        .environmentObject(connectionManager)
+                    AppsGridView().environmentObject(connectionManager)
                 }
             }
             .background(Color(.systemGroupedBackground))
@@ -41,49 +40,26 @@ struct RemoteControlView: View {
                     statusBadge
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack(spacing: 10) {
-                        Button {
+                    HStack(spacing: 6) {
+                        toolbarIconButton(icon: "hand.point.up.left.fill", color: .indigo) {
                             showTouchpad = true
-                        } label: {
-                            Label("Touchpad", systemImage: "hand.point.up.left.fill")
-                                .labelStyle(.titleAndIcon)
-                                .font(.subheadline.weight(.semibold))
                         }
-                        .tint(.indigo)
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.capsule)
-                        .controlSize(.small)
-
-                        Button {
+                        toolbarIconButton(icon: "keyboard", color: .blue) {
                             showKeyboard = true
-                        } label: {
-                            Label("Keyboard", systemImage: "keyboard")
-                                .labelStyle(.titleAndIcon)
-                                .font(.subheadline.weight(.semibold))
                         }
-                        .tint(.blue)
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.capsule)
-                        .controlSize(.small)
-
-                        Button {
-                            connectionManager.disconnect()
-                        } label: {
+                        Button { connectionManager.disconnect() } label: {
                             Image(systemName: "xmark.circle.fill")
-                                .foregroundStyle(.secondary)
                                 .font(.title3)
+                                .foregroundStyle(.secondary)
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }
         }
         .sheet(isPresented: $showKeyboard) {
-            TVKeyboardView { text in
-                connectionManager.sendText(text)
-            }
-            .presentationDetents([.fraction(0.45)])
-            .presentationDragIndicator(.visible)
+            TVKeyboardView { text in connectionManager.sendText(text) }
+                .presentationDetents([.fraction(0.45)])
+                .presentationDragIndicator(.visible)
         }
         .sheet(isPresented: $showTouchpad) {
             TVTouchpadView(connectionManager: connectionManager)
@@ -91,6 +67,20 @@ struct RemoteControlView: View {
                 .presentationDragIndicator(.visible)
         }
     }
+
+    // MARK: - Toolbar icon button
+
+    private func toolbarIconButton(icon: String, color: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: icon)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(.white)
+                .frame(width: 34, height: 34)
+                .background(color, in: Circle())
+        }
+    }
+
+    // MARK: - Demo Banner
 
     private var demoBanner: some View {
         HStack(spacing: 8) {
@@ -102,15 +92,15 @@ struct RemoteControlView: View {
             Spacer()
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 10)
+        .padding(.vertical, 9)
         .background(Color.orange)
     }
 
+    // MARK: - Status badge
+
     private var statusBadge: some View {
         HStack(spacing: 5) {
-            Circle()
-                .fill(.green)
-                .frame(width: 7, height: 7)
+            Circle().fill(.green).frame(width: 7, height: 7)
             Text("Connected")
                 .font(.caption.weight(.medium))
                 .foregroundStyle(.secondary)
@@ -120,63 +110,83 @@ struct RemoteControlView: View {
         .background(Color(.systemGray6), in: Capsule())
     }
 
+    // MARK: - Remote content
+
     private var remoteContent: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                powerVolumeRow
+            VStack(spacing: 14) {
+                topControlsRow
                 navigationPad
                 playbackControls
                 numberPad
                 streamingRow
             }
-            .padding(20)
+            .padding(16)
             .padding(.bottom, 20)
         }
     }
 
-    // MARK: - Power & Volume
+    // MARK: - Top controls: Power | Vol | Ch
 
-    private var powerVolumeRow: some View {
-        HStack(spacing: 16) {
-            RemoteButton(icon: "power", label: "Power", color: .red, size: .large) {
-                connectionManager.sendKey(.power)
-            }
-            Spacer()
-            card {
-                VStack(spacing: 10) {
-                    RemoteButton(icon: "speaker.plus.fill", label: "Vol +", color: .indigo, size: .medium) {
-                        connectionManager.sendKey(.volumeUp)
-                    }
-                    RemoteButton(icon: "speaker.slash.fill", label: "Mute", color: .orange, size: .medium) {
-                        connectionManager.sendKey(.mute)
-                    }
-                    RemoteButton(icon: "speaker.minus.fill", label: "Vol −", color: .indigo, size: .medium) {
-                        connectionManager.sendKey(.volumeDown)
-                    }
+    private var topControlsRow: some View {
+        HStack(spacing: 14) {
+            // Power + Source
+            VStack(spacing: 10) {
+                RemoteButton(icon: "power", label: "Power", color: .red, size: .large) {
+                    connectionManager.sendKey(.power)
                 }
-                .padding(.vertical, 8)
-            }
-            card {
-                VStack(spacing: 10) {
-                    RemoteButton(icon: "chevron.up", label: "Ch +", color: .purple, size: .medium) {
-                        connectionManager.sendKey(.channelUp)
-                    }
-                    RemoteButton(icon: "list.bullet", label: "Guide", color: .purple, size: .medium) {
-                        connectionManager.sendKey(.menu)
-                    }
-                    RemoteButton(icon: "chevron.down", label: "Ch −", color: .purple, size: .medium) {
-                        connectionManager.sendKey(.channelDown)
-                    }
+                RemoteButton(icon: "rectangle.on.rectangle", label: "Source", color: .indigo, size: .medium) {
+                    connectionManager.sendKey(.source)
                 }
-                .padding(.vertical, 8)
             }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
+            .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
+
+            // Volume
+            VStack(spacing: 10) {
+                Text("Volume")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                RemoteButton(icon: "speaker.plus.fill", label: "Vol +", color: .indigo, size: .medium) {
+                    connectionManager.sendKey(.volumeUp)
+                }
+                RemoteButton(icon: "speaker.slash.fill", label: "Mute", color: .orange, size: .medium) {
+                    connectionManager.sendKey(.mute)
+                }
+                RemoteButton(icon: "speaker.minus.fill", label: "Vol −", color: .indigo, size: .medium) {
+                    connectionManager.sendKey(.volumeDown)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
+            .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
+
+            // Channel
+            VStack(spacing: 10) {
+                Text("Channel")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                RemoteButton(icon: "chevron.up", label: "Ch +", color: .purple, size: .medium) {
+                    connectionManager.sendKey(.channelUp)
+                }
+                RemoteButton(icon: "list.bullet", label: "Guide", color: .purple, size: .medium) {
+                    connectionManager.sendKey(.menu)
+                }
+                RemoteButton(icon: "chevron.down", label: "Ch −", color: .purple, size: .medium) {
+                    connectionManager.sendKey(.channelDown)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
+            .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
         }
-        .padding(16)
-        .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
-        .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
     }
 
-    // MARK: - Nav Pad
+    // MARK: - Navigation pad
 
     private var navigationPad: some View {
         VStack(spacing: 0) {
@@ -187,12 +197,10 @@ struct RemoteControlView: View {
                 RemoteButton(icon: "chevron.left", label: nil, color: .primary, size: .navArrow) {
                     connectionManager.sendKey(.left)
                 }
-                Button {
-                    connectionManager.sendKey(.enter)
-                } label: {
+                Button { connectionManager.sendKey(.enter) } label: {
                     ZStack {
                         Circle()
-                            .fill(LinearGradient(colors: [.indigo, .blue],
+                            .fill(LinearGradient(colors: [.indigo, Color(hex: "5856D6")],
                                                  startPoint: .topLeading, endPoint: .bottomTrailing))
                             .frame(width: 76, height: 76)
                             .shadow(color: .indigo.opacity(0.35), radius: 8, y: 4)
@@ -209,10 +217,8 @@ struct RemoteControlView: View {
             RemoteButton(icon: "chevron.down", label: nil, color: .primary, size: .navArrow) {
                 connectionManager.sendKey(.down)
             }
-
             Divider().padding(.vertical, 10)
-
-            HStack(spacing: 40) {
+            HStack(spacing: 48) {
                 RemoteButton(icon: "house.fill", label: "Home", color: .indigo, size: .small) {
                     connectionManager.sendKey(.home)
                 }
@@ -223,7 +229,7 @@ struct RemoteControlView: View {
         }
         .padding(20)
         .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
-        .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
+        .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
     }
 
     // MARK: - Playback
@@ -231,51 +237,41 @@ struct RemoteControlView: View {
     private var playbackControls: some View {
         HStack(spacing: 0) {
             Spacer()
-            RemoteButton(icon: "backward.fill", label: "Rewind", color: .secondary, size: .medium) {
-                connectionManager.sendKey(.rewind)
-            }
+            RemoteButton(icon: "backward.fill",  label: "Rewind",  color: .secondary, size: .medium) { connectionManager.sendKey(.rewind) }
             Spacer()
-            RemoteButton(icon: "play.fill", label: "Play", color: .green, size: .medium) {
-                connectionManager.sendKey(.play)
-            }
+            RemoteButton(icon: "play.fill",      label: "Play",    color: .green,     size: .medium) { connectionManager.sendKey(.play) }
             Spacer()
-            RemoteButton(icon: "pause.fill", label: "Pause", color: .orange, size: .medium) {
-                connectionManager.sendKey(.pause)
-            }
+            RemoteButton(icon: "pause.fill",     label: "Pause",   color: .orange,    size: .medium) { connectionManager.sendKey(.pause) }
             Spacer()
-            RemoteButton(icon: "stop.fill", label: "Stop", color: .red, size: .medium) {
-                connectionManager.sendKey(.stop)
-            }
+            RemoteButton(icon: "stop.fill",      label: "Stop",    color: .red,       size: .medium) { connectionManager.sendKey(.stop) }
             Spacer()
-            RemoteButton(icon: "forward.fill", label: "Forward", color: .secondary, size: .medium) {
-                connectionManager.sendKey(.fastForward)
-            }
+            RemoteButton(icon: "forward.fill",   label: "Forward", color: .secondary, size: .medium) { connectionManager.sendKey(.fastForward) }
             Spacer()
         }
         .padding(16)
         .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
-        .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
+        .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
     }
 
-    // MARK: - Numpad
+    // MARK: - Number pad
 
     private var numberPad: some View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
             ForEach([RemoteKey.num1, .num2, .num3,
                      .num4, .num5, .num6,
                      .num7, .num8, .num9], id: \.rawValue) { key in
-                numButton(key.rawValue) { connectionManager.sendKey(key) }
+                numKey(key.rawValue) { connectionManager.sendKey(key) }
             }
             Color.clear
-            numButton("0") { connectionManager.sendKey(.num0) }
+            numKey("0") { connectionManager.sendKey(.num0) }
             Color.clear
         }
-        .padding(16)
+        .padding(14)
         .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
-        .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
+        .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
     }
 
-    private func numButton(_ label: String, action: @escaping () -> Void) -> some View {
+    private func numKey(_ label: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(label)
                 .font(.title2.bold())
@@ -287,35 +283,18 @@ struct RemoteControlView: View {
         .buttonStyle(.plain)
     }
 
-    // MARK: - Streaming
+    // MARK: - Streaming row
 
     private var streamingRow: some View {
         HStack(spacing: 12) {
-            StreamingButton(name: "Netflix", color: .red) {
-                connectionManager.sendKey(.netflix)
-            }
-            StreamingButton(name: "YouTube", color: .red) {
-                connectionManager.sendKey(.youtube)
-            }
-            StreamingButton(name: "Prime", color: .blue) {
-                connectionManager.sendKey(.prime)
-            }
+            StreamingButton(name: "Netflix", color: Color(hex: "E50914")) { connectionManager.sendKey(.netflix) }
+            StreamingButton(name: "YouTube", color: Color(hex: "FF0000")) { connectionManager.sendKey(.youtube) }
+            StreamingButton(name: "Prime",   color: Color(hex: "00A8E0")) { connectionManager.sendKey(.prime) }
             Spacer()
-            RemoteButton(icon: "rectangle.on.rectangle", label: "Source", color: .secondary, size: .medium) {
-                connectionManager.sendKey(.source)
-            }
         }
         .padding(16)
         .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 18))
-        .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
-    }
-
-    // MARK: - Helpers
-
-    private func card<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        content()
-            .padding(.horizontal, 12)
-            .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 14))
+        .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
     }
 }
 
@@ -324,12 +303,7 @@ struct RemoteControlView: View {
 enum RemoteButtonSize {
     case small, medium, large, navArrow
     var diameter: CGFloat {
-        switch self {
-        case .small:    return 44
-        case .medium:   return 52
-        case .large:    return 62
-        case .navArrow: return 54
-        }
+        switch self { case .small: return 44; case .medium: return 52; case .large: return 62; case .navArrow: return 54 }
     }
     var iconScale: CGFloat { diameter * 0.36 }
 }
@@ -375,7 +349,7 @@ struct StreamingButton: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 .background(color.opacity(0.1), in: Capsule())
-                .overlay(Capsule().stroke(color.opacity(0.3), lineWidth: 1))
+                .overlay(Capsule().stroke(color.opacity(0.25), lineWidth: 1))
         }
         .buttonStyle(.plain)
     }
