@@ -18,7 +18,7 @@ struct MainTabView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
-        .tint(.purple)
+        .tint(.indigo)
     }
 }
 
@@ -32,50 +32,11 @@ struct DeviceListView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(hex: "0F0F1A").ignoresSafeArea()
-
-                VStack(spacing: 0) {
-                    // Scanning indicator
-                    if discovery.isScanning {
-                        HStack(spacing: 10) {
-                            ProgressView().tint(.purple)
-                            Text("Scanning network…")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
-                        .padding(.vertical, 12)
-                    }
-
-                    if discovery.devices.isEmpty && !discovery.isScanning {
-                        emptyState
-                    } else {
-                        ScrollView {
-                            LazyVStack(spacing: 12) {
-                                ForEach(discovery.devices) { device in
-                                    DeviceRow(
-                                        device: device,
-                                        isConnecting: connectingID == device.id
-                                    ) {
-                                        connectTo(device)
-                                    }
-                                }
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.top, 8)
-                        }
-                    }
-
-                    Spacer()
-
-                    Button {
-                        discovery.startScan()
-                    } label: {
-                        Label("Rescan Network", systemImage: "arrow.clockwise")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundColor(.purple)
-                    }
-                    .padding(.bottom, 20)
+            Group {
+                if discovery.devices.isEmpty && !discovery.isScanning {
+                    emptyState
+                } else {
+                    deviceList
                 }
             }
             .navigationTitle("Find Your TV")
@@ -85,9 +46,22 @@ struct DeviceListView: View {
                     Button {
                         showManualAdd = true
                     } label: {
-                        Label("Add Manually", systemImage: "plus.circle.fill")
-                            .foregroundColor(.purple)
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title3)
+                            .foregroundStyle(.indigo)
                     }
+                }
+                ToolbarItem(placement: .secondaryAction) {
+                    Button {
+                        discovery.startScan()
+                    } label: {
+                        Label("Rescan", systemImage: "arrow.clockwise")
+                    }
+                }
+            }
+            .safeAreaInset(edge: .top) {
+                if discovery.isScanning {
+                    scanningBanner
                 }
             }
         }
@@ -96,32 +70,65 @@ struct DeviceListView: View {
         }
     }
 
-    private var emptyState: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "wifi.slash")
-                .font(.system(size: 52))
-                .foregroundColor(.gray.opacity(0.4))
-            Text("No TVs found")
-                .font(.title3.bold())
-                .foregroundColor(.white)
-            Text("Make sure your TV and iPad\nare on the same Wi-Fi network")
+    private var scanningBanner: some View {
+        HStack(spacing: 10) {
+            ProgressView()
+                .scaleEffect(0.8)
+                .tint(.indigo)
+            Text("Scanning your network…")
                 .font(.subheadline)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
-            Button {
-                showManualAdd = true
-            } label: {
-                Label("Add TV Manually", systemImage: "plus")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(Color.purple.opacity(0.3))
-                    .overlay(Capsule().stroke(Color.purple.opacity(0.6), lineWidth: 1))
-                    .clipShape(Capsule())
+                .foregroundStyle(.secondary)
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 10)
+        .background(.regularMaterial)
+        .overlay(alignment: .bottom) {
+            Divider()
+        }
+    }
+
+    private var deviceList: some View {
+        List {
+            Section {
+                ForEach(discovery.devices) { device in
+                    DeviceRow(device: device, isConnecting: connectingID == device.id) {
+                        connectTo(device)
+                    }
+                }
+            } header: {
+                Text("Found on your network")
             }
         }
-        .padding(.top, 60)
+        .listStyle(.insetGrouped)
+    }
+
+    private var emptyState: some View {
+        ContentUnavailableView {
+            Label("No TVs Found", systemImage: "tv.slash")
+        } description: {
+            Text("Make sure your TV and iPad are on the same Wi-Fi network, then try rescanning.")
+        } actions: {
+            VStack(spacing: 12) {
+                Button {
+                    discovery.startScan()
+                } label: {
+                    Label("Scan Network", systemImage: "arrow.clockwise")
+                        .frame(minWidth: 200)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.indigo)
+
+                Button {
+                    showManualAdd = true
+                } label: {
+                    Label("Add TV Manually", systemImage: "plus")
+                        .frame(minWidth: 200)
+                }
+                .buttonStyle(.bordered)
+                .tint(.indigo)
+            }
+        }
     }
 
     private func connectTo(_ device: TVDevice) {
@@ -130,6 +137,68 @@ struct DeviceListView: View {
             await connectionManager.connect(to: device)
             connectingID = nil
         }
+    }
+}
+
+// MARK: - Device Row
+
+struct DeviceRow: View {
+    let device: TVDevice
+    let isConnecting: Bool
+    let onTap: () -> Void
+
+    var body: some View {
+        Button(action: onTap) {
+            HStack(spacing: 14) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(brandGradient(device.brand))
+                        .frame(width: 48, height: 48)
+                    Image(systemName: device.brand.icon)
+                        .font(.system(size: 22, weight: .medium))
+                        .foregroundStyle(.white)
+                }
+
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(device.name)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                    Text("\(device.brand.rawValue) · \(device.ipAddress)")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                if isConnecting {
+                    ProgressView()
+                } else {
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+            }
+            .padding(.vertical, 4)
+        }
+        .buttonStyle(.plain)
+        .disabled(isConnecting)
+    }
+
+    private func brandGradient(_ brand: TVBrand) -> LinearGradient {
+        let colors: [Color] = {
+            switch brand {
+            case .samsung:   return [Color(hex: "1428A0"), Color(hex: "0077C8")]
+            case .lg:        return [Color(hex: "A50034"), Color(hex: "E0002B")]
+            case .sony:      return [.gray, Color(hex: "888888")]
+            case .roku:      return [Color(hex: "6F2DA8"), Color(hex: "9B59B6")]
+            case .appleTV:   return [Color(hex: "444444"), Color(hex: "222222")]
+            case .androidTV: return [Color(hex: "3DDC84"), Color(hex: "00897B")]
+            case .philips:   return [Color(hex: "0058A9"), Color(hex: "003D7A")]
+            case .fireTV:    return [Color(hex: "FF9900"), Color(hex: "E47911")]
+            case .unknown:   return [.gray, Color(hex: "888888")]
+            }
+        }()
+        return LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 }
 
@@ -147,108 +216,60 @@ struct ManualAddDeviceView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(hex: "0F0F1A").ignoresSafeArea()
-                ScrollView {
-                    formContent
-                        .padding(.bottom, 32)
+            Form {
+                Section("Connection") {
+                    HStack {
+                        Label("IP Address", systemImage: "network")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        TextField("192.168.1.100", text: $ipAddress)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Label("Device Name", systemImage: "tv")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        TextField("Optional", text: $deviceName)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                Section("TV Brand") {
+                    brandPickerGrid
+                }
+
+                if let error = errorMessage {
+                    Section {
+                        Label(error, systemImage: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.red)
+                            .font(.subheadline)
+                    }
+                }
+
+                Section {
+                    connectButton
                 }
             }
+            .navigationTitle("Add TV Manually")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
-                        .foregroundColor(.gray)
                 }
             }
         }
     }
 
-    private var formContent: some View {
-        VStack(spacing: 24) {
-            Image(systemName: "tv.badge.wifi")
-                .font(.system(size: 52))
-                .foregroundStyle(LinearGradient(
-                    colors: [.purple, .blue],
-                    startPoint: .topLeading, endPoint: .bottomTrailing
-                ))
-                .padding(.top, 16)
-
-            Text("Add TV Manually")
-                .font(.title2.bold())
-                .foregroundColor(.white)
-
-            ipField
-            nameField
-            brandPicker
-
-            if let error = errorMessage {
-                Text(error)
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .padding(.horizontal)
-            }
-
-            connectButton
-        }
-    }
-
-    private var ipField: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("IP Address")
-                .font(.caption.weight(.semibold))
-                .foregroundColor(.gray)
-                .padding(.horizontal, 16)
-            TextField("192.168.1.100", text: $ipAddress)
-                .keyboardType(.decimalPad)
-                .font(.body)
-                .foregroundColor(.white)
-                .padding(14)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white.opacity(0.07))
-                        .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1))
-                )
-                .padding(.horizontal, 16)
-        }
-    }
-
-    private var nameField: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Device Name (optional)")
-                .font(.caption.weight(.semibold))
-                .foregroundColor(.gray)
-                .padding(.horizontal, 16)
-            TextField("Living Room TV", text: $deviceName)
-                .font(.body)
-                .foregroundColor(.white)
-                .padding(14)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white.opacity(0.07))
-                        .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1))
-                )
-                .padding(.horizontal, 16)
-        }
-    }
-
-    private var brandPicker: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("TV Brand")
-                .font(.caption.weight(.semibold))
-                .foregroundColor(.gray)
-                .padding(.horizontal, 16)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(TVBrand.allCases, id: \.self) { brand in
-                        brandCell(brand)
-                    }
-                }
-                .padding(.horizontal, 16)
+    private var brandPickerGrid: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 10) {
+            ForEach(TVBrand.allCases.filter { $0 != .unknown }, id: \.self) { brand in
+                brandCell(brand)
             }
         }
+        .padding(.vertical, 6)
     }
 
     private func brandCell(_ brand: TVBrand) -> some View {
@@ -258,21 +279,19 @@ struct ManualAddDeviceView: View {
         } label: {
             VStack(spacing: 6) {
                 Image(systemName: brand.icon)
-                    .font(.title3)
-                    .foregroundColor(isSelected ? .white : .gray)
+                    .font(.title2)
+                    .foregroundStyle(isSelected ? .white : .secondary)
                 Text(brand.rawValue)
-                    .font(.caption.weight(.semibold))
-                    .foregroundColor(isSelected ? .white : .gray)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(isSelected ? .white : .secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
             }
-            .padding(.horizontal, 14)
+            .frame(maxWidth: .infinity)
             .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.purple.opacity(0.5) : Color.white.opacity(0.07))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(isSelected ? Color.purple.opacity(0.8) : Color.clear, lineWidth: 1)
-                    )
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(isSelected ? Color.indigo : Color(.systemGray6))
             )
         }
         .buttonStyle(.plain)
@@ -283,48 +302,36 @@ struct ManualAddDeviceView: View {
             addDevice()
         } label: {
             HStack {
+                Spacer()
                 if isConnecting {
-                    ProgressView().tint(.white)
+                    ProgressView()
+                        .tint(.white)
                 } else {
-                    Image(systemName: "wifi")
-                    Text("Connect")
+                    Label("Connect", systemImage: "wifi")
+                        .font(.headline)
+                        .foregroundStyle(.white)
                 }
+                Spacer()
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(connectButtonBg)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .padding(.vertical, 4)
         }
+        .listRowBackground(ipAddress.isEmpty ? Color(.systemGray4) : Color.indigo)
         .disabled(ipAddress.isEmpty || isConnecting)
-        .padding(.horizontal, 20)
-    }
-
-    private var connectButtonBg: some ShapeStyle {
-        if ipAddress.isEmpty {
-            return AnyShapeStyle(Color.gray.opacity(0.3))
-        }
-        return AnyShapeStyle(LinearGradient(colors: [.purple, .blue],
-                                            startPoint: .leading, endPoint: .trailing))
     }
 
     private func addDevice() {
         let ip = ipAddress.trimmingCharacters(in: .whitespaces)
         guard !ip.isEmpty else { return }
-
         let name = deviceName.isEmpty ? "\(selectedBrand.rawValue) TV" : deviceName
-        let port = selectedBrand.defaultPort
         let device = TVDevice(
             id: UUID().uuidString,
             name: name,
             brand: selectedBrand,
             ipAddress: ip,
-            port: port,
+            port: selectedBrand.defaultPort,
             modelName: nil,
             connectionState: .disconnected
         )
-
         isConnecting = true
         errorMessage = nil
         Task {
@@ -348,152 +355,47 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(hex: "0F0F1A").ignoresSafeArea()
-
-                List {
-                    Section {
-                        settingsRow(icon: "tv.and.mediabox", iconColor: .purple, title: "Supported TVs") {
-                            Text("Samsung, LG, Sony, Roku, Apple TV, Android TV, Fire TV, Philips")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    } header: {
-                        Text("About")
-                            .foregroundColor(.gray)
-                    }
-
-                    Section {
-                        Button {
-                            hasSeenOnboarding = false
-                        } label: {
-                            HStack {
-                                Image(systemName: "arrow.counterclockwise")
-                                    .frame(width: 28, height: 28)
-                                    .background(Color.orange.opacity(0.2))
-                                    .foregroundColor(.orange)
-                                    .clipShape(RoundedRectangle(cornerRadius: 7))
-                                Text("Replay Onboarding")
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    } header: {
-                        Text("Onboarding")
-                            .foregroundColor(.gray)
-                    }
-
-                    Section {
-                        HStack {
-                            Image(systemName: "info.circle")
-                                .frame(width: 28, height: 28)
-                                .background(Color.blue.opacity(0.2))
-                                .foregroundColor(.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 7))
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Tablet Remote")
-                                    .foregroundColor(.white)
-                                Text("Version 1.0")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    } header: {
-                        Text("App")
-                            .foregroundColor(.gray)
+            Form {
+                Section("Supported Brands") {
+                    ForEach([
+                        ("Samsung", "tv", Color(hex: "1428A0")),
+                        ("LG", "tv", Color(hex: "A50034")),
+                        ("Sony", "tv", Color.gray),
+                        ("Roku", "tv.and.mediabox", Color(hex: "6F2DA8")),
+                        ("Apple TV", "appletv", Color(hex: "444444")),
+                        ("Android TV", "tv", Color(hex: "3DDC84")),
+                        ("Fire TV", "flame", Color(hex: "FF9900")),
+                        ("Philips", "tv", Color(hex: "0058A9")),
+                    ], id: \.0) { name, icon, color in
+                        Label(name, systemImage: icon)
+                            .foregroundStyle(color)
                     }
                 }
-                .scrollContentBackground(.hidden)
-                .listRowBackground(Color.white.opacity(0.07))
+
+                Section {
+                    Button {
+                        hasSeenOnboarding = false
+                    } label: {
+                        Label("Replay Introduction", systemImage: "arrow.counterclockwise")
+                            .foregroundStyle(.orange)
+                    }
+                } header: {
+                    Text("Onboarding")
+                } footer: {
+                    Text("Shows the welcome screens again on next launch.")
+                }
+
+                Section("App Info") {
+                    LabeledContent("Version", value: "1.0")
+                    LabeledContent("Build", value: "1")
+                }
             }
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.large)
-        }
-    }
-
-    private func settingsRow(icon: String, iconColor: Color, title: String, @ViewBuilder detail: () -> some View) -> some View {
-        HStack(alignment: .top, spacing: 12) {
-            Image(systemName: icon)
-                .frame(width: 28, height: 28)
-                .background(iconColor.opacity(0.2))
-                .foregroundColor(iconColor)
-                .clipShape(RoundedRectangle(cornerRadius: 7))
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .foregroundColor(.white)
-                detail()
-            }
-        }
-        .padding(.vertical, 4)
-    }
-}
-
-// MARK: - Device Row
-
-struct DeviceRow: View {
-    let device: TVDevice
-    let isConnecting: Bool
-    let onTap: () -> Void
-
-    var body: some View {
-        Button(action: onTap) {
-            HStack(spacing: 16) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(LinearGradient(
-                            colors: brandColors(device.brand),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ))
-                        .frame(width: 56, height: 56)
-                    Image(systemName: device.brand.icon)
-                        .font(.title2)
-                        .foregroundColor(.white)
-                }
-
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(device.name)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                    Text("\(device.brand.rawValue) · \(device.ipAddress)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-
-                Spacer()
-
-                if isConnecting {
-                    ProgressView().tint(.purple)
-                } else {
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.gray)
-                }
-            }
-            .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(Color.white.opacity(0.07))
-                    .overlay(RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1))
-            )
-        }
-        .buttonStyle(.plain)
-        .disabled(isConnecting)
-    }
-
-    private func brandColors(_ brand: TVBrand) -> [Color] {
-        switch brand {
-        case .samsung: return [.blue, .cyan]
-        case .lg: return [.red, .orange]
-        case .sony: return [.gray, .white.opacity(0.8)]
-        case .roku: return [.purple, .indigo]
-        case .appleTV: return [.white.opacity(0.8), .gray]
-        case .androidTV: return [.green, .teal]
-        case .philips: return [.blue, .indigo]
-        case .fireTV: return [.orange, .red]
-        case .unknown: return [.gray, .gray.opacity(0.7)]
         }
     }
 }
+
+// MARK: - Color extension
 
 extension Color {
     init(hex: String) {
