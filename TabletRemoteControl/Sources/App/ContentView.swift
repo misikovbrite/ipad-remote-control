@@ -10,7 +10,6 @@ struct ContentView: View {
             if !hasSeenOnboarding {
                 OnboardingView {
                     hasSeenOnboarding = true
-                    discovery.startScan()
                 }
             } else if connectionManager.connectedDevice != nil {
                 RemoteControlView()
@@ -18,9 +17,6 @@ struct ContentView: View {
             } else {
                 MainTabView(discovery: discovery, connectionManager: connectionManager)
             }
-        }
-        .onAppear {
-            if hasSeenOnboarding { discovery.startScan() }
         }
     }
 }
