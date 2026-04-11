@@ -11,6 +11,10 @@ struct RemoteControlView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                if connectionManager.isDemoMode {
+                    demoBanner
+                }
+
                 Picker("", selection: $activeTab) {
                     Text("Remote").tag(RemoteTab.remote)
                     Text("Apps").tag(RemoteTab.apps)
@@ -86,6 +90,20 @@ struct RemoteControlView: View {
                 .presentationDetents([.fraction(0.6)])
                 .presentationDragIndicator(.visible)
         }
+    }
+
+    private var demoBanner: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "play.circle.fill")
+                .foregroundStyle(.white)
+            Text("Demo Mode — buttons don't control a real TV")
+                .font(.caption.weight(.medium))
+                .foregroundStyle(.white)
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(Color.orange)
     }
 
     private var statusBadge: some View {

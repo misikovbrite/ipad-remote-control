@@ -46,7 +46,7 @@ enum TVConnectionState {
     case failed(String)
 }
 
-struct TVDevice: Identifiable, Equatable {
+struct TVDevice: Identifiable, Equatable, Codable {
     let id: String
     let name: String
     let brand: TVBrand
@@ -54,6 +54,11 @@ struct TVDevice: Identifiable, Equatable {
     let port: Int
     var modelName: String?
     var connectionState: TVConnectionState = .disconnected
+
+    // connectionState is transient — excluded from persistence
+    enum CodingKeys: String, CodingKey {
+        case id, name, brand, ipAddress, port, modelName
+    }
 
     static func == (lhs: TVDevice, rhs: TVDevice) -> Bool {
         lhs.id == rhs.id
