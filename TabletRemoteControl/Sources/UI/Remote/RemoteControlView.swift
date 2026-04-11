@@ -34,18 +34,6 @@ struct RemoteControlView: View {
                 }
             }
 
-            // Floating keyboard button
-            if activeTab == .remote {
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        floatingButtons
-                            .padding(.trailing, 28)
-                            .padding(.bottom, 32)
-                    }
-                }
-            }
         }
         .sheet(isPresented: $showKeyboard) {
             TVKeyboardView { text in
@@ -62,7 +50,7 @@ struct RemoteControlView: View {
     }
 
     private var topBar: some View {
-        HStack {
+        HStack(spacing: 16) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(connectionManager.connectedDevice?.name ?? "TV")
                     .font(.headline)
@@ -76,7 +64,43 @@ struct RemoteControlView: View {
                         .foregroundColor(.green)
                 }
             }
+
             Spacer()
+
+            // Touchpad button
+            Button {
+                showTouchpad = true
+            } label: {
+                Label("Touchpad", systemImage: "hand.point.up.left.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule()
+                            .fill(LinearGradient(colors: [.purple, .blue],
+                                                 startPoint: .leading, endPoint: .trailing))
+                    )
+            }
+            .buttonStyle(.plain)
+
+            // Keyboard button
+            Button {
+                showKeyboard = true
+            } label: {
+                Label("Keyboard", systemImage: "keyboard")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule()
+                            .fill(LinearGradient(colors: [.blue, .cyan],
+                                                 startPoint: .leading, endPoint: .trailing))
+                    )
+            }
+            .buttonStyle(.plain)
+
             Button {
                 connectionManager.disconnect()
             } label: {
@@ -262,37 +286,6 @@ struct RemoteControlView: View {
         }
         .padding(20)
         .background(glassBackground)
-    }
-
-    private var floatingButtons: some View {
-        VStack(spacing: 12) {
-            Button {
-                showTouchpad = true
-            } label: {
-                Image(systemName: "hand.point.up.left.fill")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .frame(width: 52, height: 52)
-                    .background(
-                        Circle()
-                            .fill(LinearGradient(colors: [.purple, .blue], startPoint: .top, endPoint: .bottom))
-                    )
-                    .shadow(color: .purple.opacity(0.5), radius: 8)
-            }
-            Button {
-                showKeyboard = true
-            } label: {
-                Image(systemName: "keyboard")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .frame(width: 52, height: 52)
-                    .background(
-                        Circle()
-                            .fill(LinearGradient(colors: [.blue, .cyan], startPoint: .top, endPoint: .bottom))
-                    )
-                    .shadow(color: .blue.opacity(0.5), radius: 8)
-            }
-        }
     }
 
     private var glassBackground: some View {

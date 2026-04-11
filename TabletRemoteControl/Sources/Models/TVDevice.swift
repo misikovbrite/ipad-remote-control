@@ -24,6 +24,19 @@ enum TVBrand: String, Codable, CaseIterable {
         case .unknown: return "tv"
         }
     }
+
+    var defaultPort: Int {
+        switch self {
+        case .samsung: return 8001
+        case .lg: return 3000
+        case .sony: return 80
+        case .roku: return 8060
+        case .appleTV: return 7000
+        case .androidTV, .fireTV: return 5555
+        case .philips: return 1925
+        case .unknown: return 8001
+        }
+    }
 }
 
 enum TVConnectionState {

@@ -16,7 +16,7 @@ struct ContentView: View {
                 RemoteControlView()
                     .environmentObject(connectionManager)
             } else {
-                DeviceListView(discovery: discovery, connectionManager: connectionManager)
+                MainTabView(discovery: discovery, connectionManager: connectionManager)
             }
         }
         .onAppear {
