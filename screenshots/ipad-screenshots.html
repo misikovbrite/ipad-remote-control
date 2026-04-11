@@ -93,19 +93,92 @@ h1 { color: white; font-size: 28px; font-weight: 700; }
 <!-- SCREEN 1: HERO -->
 <div class="screen-wrapper">
 <div class="screen-border"><div class="screen" id="screen1">
-<div class="glow" style="top:-80px;left:-60px;width:300px;height:300px;background:radial-gradient(ellipse,rgba(46,84,153,0.35) 0%,transparent 70%);"></div>
-<div class="glow" style="bottom:0;right:-40px;width:250px;height:250px;background:radial-gradient(ellipse,rgba(90,160,255,0.2) 0%,transparent 70%);"></div>
-<div class="headline" style="top:42px;font-size:44px;">Turn Your iPad<br>Into a Smart<br><span class="acc">TV Remote.</span></div>
-<img src="https://cppflow.com/assets/gen_20260410_214020_41cfcf86.png" style="position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:480px;height:auto;object-fit:contain;">
-<div style="position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:center;align-items:center;z-index:10;">
-<div style="display:flex;align-items:center;gap:0;">
-<img src="https://cppflow.com/assets/laurel_left.png" style="height:90px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transform:scaleX(1);opacity:0.85;">
-<div style="display:flex;flex-direction:column;align-items:center;margin:0 -10px;">
-<div style="font-family:'Inter',sans-serif;font-size:30px;font-weight:900;color:#FFFFFF;letter-spacing:-1px;line-height:1;">8 TVs</div>
-<div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:3px;margin-top:2px;">SUPPORTED</div>
+<div class="glow" style="top:-80px;left:-60px;width:320px;height:320px;background:radial-gradient(ellipse,rgba(46,84,153,0.4) 0%,transparent 70%);"></div>
+<div class="glow" style="bottom:-40px;right:-40px;width:280px;height:280px;background:radial-gradient(ellipse,rgba(90,160,255,0.25) 0%,transparent 70%);"></div>
+
+<!-- Headline -->
+<div class="headline" style="top:32px;font-size:42px;letter-spacing:-1.5px;">Control Your<br>Smart TV<br><span class="acc">With Your iPad.</span></div>
+
+<!-- iPad mockup with remote UI -->
+<div style="position:absolute;top:188px;left:50%;transform:translateX(-50%);width:310px;height:390px;background:#1C1C1E;border-radius:22px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 0 0 3px rgba(255,255,255,0.08),0 0 0 5px rgba(0,0,0,0.2),0 28px 60px rgba(0,0,0,0.7);overflow:hidden;">
+  <!-- Status bar -->
+  <div style="height:28px;background:#1C1C1E;display:flex;justify-content:space-between;align-items:center;padding:0 14px 0;flex-shrink:0;">
+    <span style="font-size:8px;font-weight:700;color:#FFF;">9:41</span>
+    <div style="display:flex;gap:3px;align-items:center;">
+      <svg width="12" height="8" viewBox="0 0 12 8" fill="white" opacity="0.85"><rect x="0" y="5" width="2" height="3" rx="0.5"/><rect x="3" y="3.5" width="2" height="4.5" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg>
+      <svg width="16" height="8" viewBox="0 0 16 8" fill="none"><rect x="0.5" y="0.5" width="13" height="7" rx="1.5" stroke="white" stroke-opacity="0.5"/><rect x="1.5" y="1.5" width="9" height="5" rx="1" fill="white"/></svg>
+    </div>
+  </div>
+  <!-- Nav bar -->
+  <div style="background:#2C2C2E;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid rgba(255,255,255,0.1);">
+    <span style="font-size:11px;font-weight:700;color:#FFF;">Samsung QLED 65"</span>
+    <div style="display:flex;gap:5px;">
+      <div style="width:22px;height:22px;background:rgba(88,86,214,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">👆</div>
+      <div style="width:22px;height:22px;background:rgba(10,132,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;">⌨</div>
+    </div>
+  </div>
+  <!-- Remote content area - dark bg -->
+  <div style="flex:1;background:#1C1C1E;padding:8px;display:flex;flex-direction:column;gap:6px;">
+    <!-- Top row: Power | Volume | Channel -->
+    <div style="display:flex;gap:5px;">
+      <!-- Power+Source -->
+      <div style="flex:1;background:#2C2C2E;border-radius:12px;padding:7px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:30px;height:30px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;">⏻</div>
+        <div style="font-size:6px;font-weight:600;color:#FF3B30;">Power</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;">⬛</div>
+        <div style="font-size:6px;color:#8E8E93;">Source</div>
+      </div>
+      <!-- Volume -->
+      <div style="flex:1;background:#2C2C2E;border-radius:12px;padding:7px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;">
+        <div style="font-size:6.5px;font-weight:700;color:#8E8E93;letter-spacing:0.3px;text-transform:uppercase;">Volume</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">🔊</div>
+        <div style="width:28px;height:28px;background:rgba(255,159,10,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">🔇</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">🔉</div>
+      </div>
+      <!-- Channel -->
+      <div style="flex:1;background:#2C2C2E;border-radius:12px;padding:7px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;">
+        <div style="font-size:6.5px;font-weight:700;color:#8E8E93;letter-spacing:0.3px;text-transform:uppercase;">Channel</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;">▲</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;">≡</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;">▼</div>
+      </div>
+    </div>
+    <!-- D-pad -->
+    <div style="background:#2C2C2E;border-radius:12px;padding:8px;display:flex;flex-direction:column;align-items:center;gap:2px;">
+      <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">▲</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">◀</div>
+        <!-- OK button — big indigo circle -->
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#5E5CE6,#3A38B0);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#FFF;box-shadow:0 4px 14px rgba(94,92,230,0.6);">OK</div>
+        <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">▶</div>
+      </div>
+      <div style="width:28px;height:28px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">▼</div>
+      <div style="height:0.5px;background:rgba(255,255,255,0.1);width:100%;margin:4px 0;"></div>
+      <div style="display:flex;gap:24px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><div style="width:22px;height:22px;background:rgba(94,92,230,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">🏠</div><div style="font-size:5.5px;color:#8E8E93;">Home</div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><div style="width:22px;height:22px;background:#3A3A3C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">↩</div><div style="font-size:5.5px;color:#8E8E93;">Back</div></div>
+      </div>
+    </div>
+  </div>
 </div>
-<img src="https://cppflow.com/assets/laurel_left.png" style="height:90px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transform:scaleX(-1);opacity:0.85;">
-</div></div>
+
+<!-- Finger pointing at OK button -->
+<div style="position:absolute;top:358px;left:50%;transform:translateX(-25%);font-size:52px;z-index:20;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.6));transform-origin:bottom center;transform:translateX(-10%) rotate(-20deg);">👆</div>
+
+<!-- Touch ripple on OK -->
+<div style="position:absolute;top:388px;left:50%;transform:translateX(12%);width:56px;height:56px;border-radius:50%;border:2px solid rgba(94,92,230,0.6);z-index:19;"></div>
+<div style="position:absolute;top:383px;left:50%;transform:translateX(8%);width:66px;height:66px;border-radius:50%;border:1.5px solid rgba(94,92,230,0.3);z-index:18;"></div>
+
+<!-- Brand badges row -->
+<div style="position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:20;flex-wrap:wrap;padding:0 12px;">
+  <div style="background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:700;color:#FFF;border:1px solid rgba(255,255,255,0.2);">Samsung</div>
+  <div style="background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:700;color:#FFF;border:1px solid rgba(255,255,255,0.2);">LG</div>
+  <div style="background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:700;color:#FFF;border:1px solid rgba(255,255,255,0.2);">Sony</div>
+  <div style="background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:700;color:#FFF;border:1px solid rgba(255,255,255,0.2);">Roku</div>
+  <div style="background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:700;color:#FFF;border:1px solid rgba(255,255,255,0.2);">Apple TV</div>
+  <div style="background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:700;color:#FFF;border:1px solid rgba(255,255,255,0.2);">Fire TV</div>
+</div>
+
 </div></div>
 <div class="screen-label">Screen 1 — Hero</div>
 </div>
