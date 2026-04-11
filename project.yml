@@ -31,7 +31,7 @@ targets:
       path: TabletRemoteControl/Sources/App/Info.plist
       properties:
         CFBundleDisplayName: "Tablet Remote"
-        CFBundleIdentifier: "ipad remote control - ipadremotecontrolapp"
+        CFBundleIdentifier: "ipadremotecontrolapp"
         CFBundleName: TabletRemoteControl
         CFBundleShortVersionString: "1.0"
         CFBundleVersion: "1"
@@ -59,7 +59,7 @@ targets:
     settings:
       base:
         INFOPLIST_FILE: TabletRemoteControl/Sources/App/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: "ipad remote control - ipadremotecontrolapp"
+        PRODUCT_BUNDLE_IDENTIFIER: "ipadremotecontrolapp"
 
 schemes:
   TabletRemoteControl:
