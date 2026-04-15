@@ -90,10 +90,12 @@ TabletRemoteControl/Sources/
 ## App Store
 
 - **ASC:** [appstoreconnect.apple.com](https://appstoreconnect.apple.com) → App ID 6762023054
-- **v1.0 build 1** — отправлен на ревью 2026-04-11
+- **v1.0 build 1** — rejected 2026-04-14, ответ отправлен в App Review 2026-04-15
+- **Rejection:** 2.3.10 (android в keywords/описании) + 2.1(b) (вопросы по бизнес-модели)
+- **Что сделано:** убран `android` из keywords, отправлен ответ с объяснением что приложение бесплатное (IAP планируются в R2)
 - **Territories:** Poland only (R1)
 - **Release:** Manual (Pending Developer Release)
-- **Keywords:** `smart,tv,samsung,lg,sony,roku,fire,amazon,touchpad,keyboard,wifi,universal,philips,android,oled`
+- **Keywords:** `smart,tv,samsung,lg,sony,roku,fire,amazon,touchpad,keyboard,wifi,universal,philips,oled`
 - **Demo Mode для ревьюера:** на главном экране кнопка "Try Demo Mode"
 
 ---
