@@ -90,9 +90,9 @@ TabletRemoteControl/Sources/
 ## App Store
 
 - **ASC:** [appstoreconnect.apple.com](https://appstoreconnect.apple.com) → App ID 6762023054
-- **v1.0 build 1** — rejected 2026-04-14, ответ отправлен в App Review 2026-04-15
-- **Rejection:** 2.3.10 (android в keywords/описании) + 2.1(b) (вопросы по бизнес-модели)
-- **Что сделано:** убран `android` из keywords, отправлен ответ с объяснением что приложение бесплатное (IAP планируются в R2)
+- **v1.0 build 1** — rejected 2026-04-14, ответ отправлен 2026-04-15
+- **Rejection:** 2.3.10 (android в keywords) + 2.1(b) (бизнес-модель)
+- **v1.1 build 2** — R2 в разработке (2026-04-16), НЕ отправлять до доработки продукта
 - **Territories:** Poland only (R1)
 - **Release:** Manual (Pending Developer Release)
 - **Keywords:** `smart,tv,samsung,lg,sony,roku,fire,amazon,touchpad,keyboard,wifi,universal,philips,oled`
@@ -100,10 +100,24 @@ TabletRemoteControl/Sources/
 
 ---
 
-## Важно для следующих версий (R2)
+## R2 — Статус (v1.1 build 2)
 
-- Добавить paywall / подписку (сейчас приложение полностью бесплатное)
-- Открыть все территории (сейчас только Poland)
-- Добавить In-App Event одновременно с R2
-- Исправить: в DeviceListView нет pull-to-refresh для поиска устройств
+### Готово (2026-04-16):
+- ✅ `PaywallView.swift` — полный пейволл (dark navy, indigo, fullScreenCover)
+- ✅ `SubscriptionService.swift` — StoreKit 2, @Observable, ProState, offline cache
+- ✅ `FeatureGate.swift` — keyboard/touchpad/appsGrid/multipleDevices = premium
+- ✅ `PremiumBannerView.swift` — inline upsell для заблокированных фич
+- ✅ `TabletRemoteControl.storekit` — локальный конфиг для Xcode тестирования
+- ✅ `create_subscriptions_r2.py` — скрипт создания подписок в ASC (11 шагов)
+- ✅ `docs/ASO_localization.md` — ASO тексты на 7 языков (de, fr, es, ja, ko, pt-BR, ru)
+- ✅ Баги исправлены: force unwraps в Samsung/LG протоколах, subscription status check
+- ✅ Версия поднята до 1.1 (build 2)
+- ✅ Подписки: `ipadremotecontrolapp_weekly` ($5.99/wk) + `ipadremotecontrolapp_yearly` ($19.99/yr, 3-day trial)
+
+### Ещё нужно:
+- ⏳ Доработать сам продукт (улучшить работу ТВ протоколов)
+- ⏳ Открыть все территории (сейчас только Poland)
+- ⏳ Добавить In-App Event одновременно с сабмитом
+- ⏳ Создать подписки в ASC через `create_subscriptions_r2.py`
+- ⏳ Загрузить ASO локализацию в ASC (из `docs/ASO_localization.md`)
 - Apple TV протокол требует MFi/companion entitlement — может потребоваться отдельное разрешение
