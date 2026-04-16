@@ -170,7 +170,7 @@ class SamsungProtocol: NSObject, TVProtocol {
 
     private func send(json: [String: Any]) async throws {
         let data = try JSONSerialization.data(withJSONObject: json)
-        let string = String(data: data, encoding: .utf8)!
+        guard let string = String(data: data, encoding: .utf8) else { throw TVProtocolError.commandFailed("Failed to encode JSON as UTF-8") }
         try await webSocketTask?.send(.string(string))
     }
 
@@ -214,7 +214,7 @@ func withTimeout<T>(seconds: Double, operation: @escaping () async throws -> T?)
             try await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
             throw TVProtocolError.timeout
         }
-        let result = try await group.next()!
+        guard let result = try await group.next() else { throw TVProtocolError.timeout }
         group.cancelAll()
         return result
     }

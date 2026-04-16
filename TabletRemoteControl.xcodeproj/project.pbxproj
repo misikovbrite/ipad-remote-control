@@ -23,6 +23,7 @@
 		5CD03D3CA8E1F91892726176 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD180D27E1A0CD805484D97 /* AppState.swift */; };
 		61E4F1067B01A159E0D2B5E1 /* FeatureGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A1A337D2F9E60B821A1F5 /* FeatureGate.swift */; };
 		6934C3A154ED1C7E4E7A11CA /* TabletRemoteControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */; };
+		6AD5D6E2A239F855E080ACD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96138DAC0CABDECDF9DFED2 /* Assets.xcassets */; };
 		7F9E07E39BBCC88379F58DC5 /* SamsungProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716BA9196E4A15DF332F12E /* SamsungProtocol.swift */; };
 		8CF3EC8893CE3873458AFECB /* TVProtocolFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */; };
 		98F688608753CF7F4133CB90 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA321380BDEDF74F71C36B /* DeviceListView.swift */; };
@@ -31,7 +32,6 @@
 		CBA36354713F5D34CD785C9F /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15074854B862AC5BB52A1464 /* PaywallView.swift */; };
 		CC271FD4D9AC306FD0556A6D /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD24C4ACB6C058BA2309093 /* RemoteCommand.swift */; };
 		D196124E8E09D6BDB18C0886 /* TVTouchpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */; };
-		D2DE59D6B0C79AEAA700B51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB44D2D64F4219AB549BD065 /* Assets.xcassets */; };
 		E6D9013A4707A6248AA37D80 /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605F3AFDAAB40C71333DD362 /* RemoteControlView.swift */; };
 		EABE228725C5166BA7780FC6 /* AppsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF5FF93FB01DD316F3FE6D /* AppsGridView.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,7 @@
 		AAB190AC297ED1C70AC6CA52 /* TabletRemoteControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TabletRemoteControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F56D94CBE14D0C16DA2E37 /* TVConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVConnectionManager.swift; sourceTree = "<group>"; };
 		CAE3A63596D1B8186A84D78E /* TVDiscoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDiscoveryService.swift; sourceTree = "<group>"; };
-		DB44D2D64F4219AB549BD065 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TabletRemoteControl/Assets.xcassets; sourceTree = "<group>"; };
+		D96138DAC0CABDECDF9DFED2 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TabletRemoteControl/Assets.xcassets; sourceTree = "<group>"; };
 		F299AC22F21570572ABB1FCB /* PremiumBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumBannerView.swift; sourceTree = "<group>"; };
 		F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProtocolFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,7 +229,7 @@
 			children = (
 				3A5574AC944B1B032C3948B6 /* Sources */,
 				91C488167162E9FFB0154A66 /* Products */,
-				DB44D2D64F4219AB549BD065 /* Assets.xcassets */,
+				D96138DAC0CABDECDF9DFED2 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,7 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05EA6E22CB87A8BAB4D009EC /* TabletRemoteControl.storekit in Resources */,
-				D2DE59D6B0C79AEAA700B51B /* Assets.xcassets in Resources */,
+				6AD5D6E2A239F855E080ACD1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

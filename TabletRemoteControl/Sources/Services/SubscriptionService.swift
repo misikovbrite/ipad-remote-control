@@ -175,7 +175,13 @@ class SubscriptionService {
     private func resolveActiveState(productID: String) async -> ProState {
         // Check subscription statuses for grace period / billing retry
         do {
-            let statuses = try await Product.SubscriptionInfo.status(for: "remote_premium")
+            let groupIDs = Set([weeklyProduct, yearlyProduct].compactMap { $0?.subscription?.subscriptionGroupID })
+            var allStatuses: [Product.SubscriptionInfo.Status] = []
+            for groupID in groupIDs {
+                let s = try await Product.SubscriptionInfo.status(for: groupID)
+                allStatuses.append(contentsOf: s)
+            }
+            let statuses = allStatuses
             for status in statuses {
                 guard (try? status.renewalInfo.payloadValue) != nil else { continue }
                 switch status.state {
