@@ -1,0 +1,62 @@
+{
+  "_comment": "StoreKit configuration for Tablet Remote Control",
+  "identifier": "TabletRemoteControl",
+  "nonConsumableProducts": [],
+  "consumableProducts": [],
+  "autoRenewableSubscriptions": [
+    {
+      "familyShareable": false,
+      "groupLevel": 2,
+      "internalID": "weekly_001",
+      "localizations": [
+        {
+          "description": "All features unlocked for a week",
+          "displayName": "Weekly",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "ipadremotecontrolapp_weekly",
+      "recurringSubscriptionPeriod": "P1W",
+      "subscriptionGroupID": "remote_premium",
+      "introductoryOffer": null,
+      "referenceName": "Weekly"
+    },
+    {
+      "familyShareable": false,
+      "groupLevel": 1,
+      "internalID": "yearly_001",
+      "localizations": [
+        {
+          "description": "All features unlocked for a year",
+          "displayName": "Yearly",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "ipadremotecontrolapp_yearly",
+      "recurringSubscriptionPeriod": "P1Y",
+      "subscriptionGroupID": "remote_premium",
+      "introductoryOffer": {
+        "duration": "P3D",
+        "introductoryOfferType": "freeTrial",
+        "numberOfPeriods": 1
+      },
+      "referenceName": "Yearly"
+    }
+  ],
+  "subscriptionGroups": [
+    {
+      "id": "remote_premium",
+      "localizations": [
+        {
+          "displayName": "Premium",
+          "locale": "en_US"
+        }
+      ],
+      "name": "Premium"
+    }
+  ],
+  "version": {
+    "major": 2,
+    "minor": 0
+  }
+}

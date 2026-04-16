@@ -559,10 +559,25 @@ struct ManualAddDeviceView: View {
 
 struct SettingsView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = true
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationStack {
             Form {
+                Section("Premium") {
+                    if SubscriptionService.shared.isPro {
+                        Label("Premium Active", systemImage: "crown.fill")
+                            .foregroundStyle(.indigo)
+                    } else {
+                        Button {
+                            showPaywall = true
+                        } label: {
+                            Label("Upgrade to Premium", systemImage: "crown.fill")
+                                .foregroundStyle(.indigo)
+                        }
+                    }
+                }
+
                 Section("Supported Brands") {
                     ForEach([
                         ("Samsung", "tv", Color(hex: "1428A0")),
@@ -592,11 +607,17 @@ struct SettingsView: View {
                 }
 
                 Section("App Info") {
-                    LabeledContent("Version", value: "1.0")
-                    LabeledContent("Build", value: "1")
+                    LabeledContent("Version", value: "1.1")
+                    LabeledContent("Build", value: "2")
                 }
             }
             .navigationTitle("Settings")
+        }
+        .fullScreenCover(isPresented: $showPaywall) {
+            PaywallView(
+                subscriptionService: SubscriptionService.shared,
+                onDismiss: { showPaywall = false }
+            )
         }
     }
 }

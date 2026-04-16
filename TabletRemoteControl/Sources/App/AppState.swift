@@ -8,4 +8,5 @@ class AppState: ObservableObject {
     @Published var showKeyboard = false
     @Published var showTouchpad = false
     @Published var isPremium = false
+    @Published var showPaywall = false
 }

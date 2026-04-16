@@ -5,6 +5,9 @@ struct RemoteControlView: View {
     @State private var activeTab: RemoteTab = .remote
     @State private var showKeyboard = false
     @State private var showTouchpad = false
+    @State private var showPremiumPaywall = false
+
+    private let subscriptionService = SubscriptionService.shared
 
     enum RemoteTab { case remote, apps }
 
@@ -29,7 +32,7 @@ struct RemoteControlView: View {
                 if activeTab == .remote {
                     remoteContent
                 } else {
-                    AppsGridView().environmentObject(connectionManager)
+                    appsTabContent
                 }
             }
             .background(Color(.systemGroupedBackground))
@@ -42,10 +45,18 @@ struct RemoteControlView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 6) {
                         toolbarIconButton(icon: "hand.point.up.left.fill", color: .indigo) {
-                            showTouchpad = true
+                            if FeatureGate.canAccess(.touchpad, subscriptionService: subscriptionService) {
+                                showTouchpad = true
+                            } else {
+                                showPremiumPaywall = true
+                            }
                         }
                         toolbarIconButton(icon: "keyboard", color: .blue) {
-                            showKeyboard = true
+                            if FeatureGate.canAccess(.keyboard, subscriptionService: subscriptionService) {
+                                showKeyboard = true
+                            } else {
+                                showPremiumPaywall = true
+                            }
                         }
                         Button { connectionManager.disconnect() } label: {
                             Image(systemName: "xmark.circle.fill")
@@ -65,6 +76,25 @@ struct RemoteControlView: View {
             TVTouchpadView(connectionManager: connectionManager)
                 .presentationDetents([.fraction(0.6)])
                 .presentationDragIndicator(.visible)
+        }
+        .fullScreenCover(isPresented: $showPremiumPaywall) {
+            PaywallView(subscriptionService: subscriptionService, onDismiss: { showPremiumPaywall = false })
+        }
+    }
+
+    // MARK: - Apps tab content
+
+    @ViewBuilder
+    private var appsTabContent: some View {
+        if FeatureGate.canAccess(.appsGrid, subscriptionService: subscriptionService) {
+            AppsGridView().environmentObject(connectionManager)
+        } else {
+            ScrollView {
+                PremiumBannerView(featureName: "Apps Grid") {
+                    showPremiumPaywall = true
+                }
+                .padding(.top, 40)
+            }
         }
     }
 
