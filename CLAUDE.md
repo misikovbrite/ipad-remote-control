@@ -92,32 +92,34 @@ TabletRemoteControl/Sources/
 - **ASC:** [appstoreconnect.apple.com](https://appstoreconnect.apple.com) → App ID 6762023054
 - **v1.0 build 1** — rejected 2026-04-14, ответ отправлен 2026-04-15
 - **Rejection:** 2.3.10 (android в keywords) + 2.1(b) (бизнес-модель)
-- **v1.1 build 2** — R2 в разработке (2026-04-16), НЕ отправлять до доработки продукта
-- **Territories:** Poland only (R1)
+- **v1.1 build 6** — отправлен на ревью 2026-04-19 (Fast Track + In-App Event)
+- **Territories:** 175 стран
 - **Release:** Manual (Pending Developer Release)
 - **Keywords:** `smart,tv,samsung,lg,sony,roku,fire,amazon,touchpad,keyboard,wifi,universal,philips,oled`
 - **Demo Mode для ревьюера:** на главном экране кнопка "Try Demo Mode"
+- **In-App Event:** "Google TV Now Supported" (ID: 6762532263) — отправлен одновременно с билдом
 
 ---
 
-## R2 — Статус (v1.1 build 2)
+## v1.1 — Статус (build 6, отправлен 2026-04-19)
 
-### Готово (2026-04-16):
-- ✅ `PaywallView.swift` — полный пейволл (dark navy, indigo, fullScreenCover)
+### Что сделано:
+- ✅ `PaywallView.swift` — пейволл (dark navy, indigo, fullScreenCover)
 - ✅ `SubscriptionService.swift` — StoreKit 2, @Observable, ProState, offline cache
 - ✅ `FeatureGate.swift` — keyboard/touchpad/appsGrid/multipleDevices = premium
 - ✅ `PremiumBannerView.swift` — inline upsell для заблокированных фич
-- ✅ `TabletRemoteControl.storekit` — локальный конфиг для Xcode тестирования
-- ✅ `create_subscriptions_r2.py` — скрипт создания подписок в ASC (11 шагов)
-- ✅ `docs/ASO_localization.md` — ASO тексты на 7 языков (de, fr, es, ja, ko, pt-BR, ru)
-- ✅ Баги исправлены: force unwraps в Samsung/LG протоколах, subscription status check
-- ✅ Версия поднята до 1.1 (build 2)
-- ✅ Подписки: `ipadremotecontrolapp_weekly` ($5.99/wk) + `ipadremotecontrolapp_yearly` ($19.99/yr, 3-day trial)
+- ✅ Подписки в ASC: `ipadremotecontrolapp_weekly` ($5.99/wk) + `ipadremotecontrolapp_yearly` ($19.99/yr, 3-day trial) + `remote_ipad_lifetime` ($59.99)
+- ✅ `TARGETED_DEVICE_FAMILY="2"` — iPad only в бинаре (было [1,2], исправлено)
+- ✅ Иконка — цветные кнопки пульта, тёмно-синий фон, edge-to-edge
+- ✅ Скриншоты — 3 iPad Pro 12.9" + 3 iPhone 6.5" (требование ASC)
+- ✅ What's New — Google TV / Android TV поддержка
+- ✅ In-App Event "Google TV Now Supported" (ID: 6762532263) — 175 территорий
 
-### Ещё нужно:
-- ⏳ Доработать сам продукт (улучшить работу ТВ протоколов)
-- ⏳ Открыть все территории (сейчас только Poland)
-- ⏳ Добавить In-App Event одновременно с сабмитом
-- ⏳ Создать подписки в ASC через `create_subscriptions_r2.py`
-- ⏳ Загрузить ASO локализацию в ASC (из `docs/ASO_localization.md`)
-- Apple TV протокол требует MFi/companion entitlement — может потребоваться отдельное разрешение
+### Сборка (важно):
+- `TARGETED_DEVICE_FAMILY: "2"` должен быть в **target settings** (не только в global), иначе xcodegen перезаписывает на `1,2`
+- project.yml → targets → TabletRemoteControl → settings → base → `TARGETED_DEVICE_FAMILY: "2"`
+
+### Следующие шаги (R3):
+- ⏳ Улучшить работу ТВ протоколов (Samsung/LG/Sony)
+- ⏳ Загрузить ASO локализацию (из `docs/ASO_localization.md`) на 7 языков
+- Apple TV протокол требует MFi/companion entitlement
