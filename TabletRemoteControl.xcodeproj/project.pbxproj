@@ -13,6 +13,7 @@
 		18264E8A10A0A76310529B2F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB6E59EB9F67ACD3BEED87 /* OnboardingView.swift */; };
 		1CB58BD67FAF4D98F890566B /* TVDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5C942E58A64F4A966BB15 /* TVDevice.swift */; };
 		1F24B755EC834993AD6EDC0F /* TVDiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE3A63596D1B8186A84D78E /* TVDiscoveryService.swift */; };
+		236AFA033E2972AC1280B526 /* AppleTVProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C318D5431251DFB9928843 /* AppleTVProtocol.swift */; };
 		287564A289942897D101EBA0 /* PremiumBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F299AC22F21570572ABB1FCB /* PremiumBannerView.swift */; };
 		30E21FF7B81CA7CB6950C9C4 /* TVKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12E9FAE333E5A0422A5C /* TVKeyboardView.swift */; };
 		33DBD5262B97F04C97F56A9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB4759D16C8972F7A5B7D9 /* ContentView.swift */; };
@@ -23,21 +24,27 @@
 		5CD03D3CA8E1F91892726176 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD180D27E1A0CD805484D97 /* AppState.swift */; };
 		61E4F1067B01A159E0D2B5E1 /* FeatureGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A1A337D2F9E60B821A1F5 /* FeatureGate.swift */; };
 		6934C3A154ED1C7E4E7A11CA /* TabletRemoteControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */; };
-		6AD5D6E2A239F855E080ACD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96138DAC0CABDECDF9DFED2 /* Assets.xcassets */; };
+		69C9787643911ADC82DBF382 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A1632FC17997D9529F950 /* SceneDelegate.swift */; };
 		7F9E07E39BBCC88379F58DC5 /* SamsungProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716BA9196E4A15DF332F12E /* SamsungProtocol.swift */; };
 		8CF3EC8893CE3873458AFECB /* TVProtocolFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */; };
 		98F688608753CF7F4133CB90 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA321380BDEDF74F71C36B /* DeviceListView.swift */; };
 		A32ECEA255939E61602FC073 /* SonyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D739D67A3729B2349963B /* SonyProtocol.swift */; };
+		A7B7EBCDB63E69F494C8C702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05815501034D6ABAD9E58B1 /* Assets.xcassets */; };
+		B6611568729E59E50F13C30B /* PairingPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871A6FB12E5BDEB3A01F2835 /* PairingPINView.swift */; };
 		C58AA2553118DBECDCD2DF3B /* PhilipsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70405CA96B592D7E99374B1E /* PhilipsProtocol.swift */; };
+		C6C4591B39B3CEABD9F2F169 /* SRPHAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD907AC55E4F12A4314F2C /* SRPHAP.swift */; };
 		CBA36354713F5D34CD785C9F /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15074854B862AC5BB52A1464 /* PaywallView.swift */; };
 		CC271FD4D9AC306FD0556A6D /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD24C4ACB6C058BA2309093 /* RemoteCommand.swift */; };
 		D196124E8E09D6BDB18C0886 /* TVTouchpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */; };
+		D42B9B4A1CC9EC20014B8B6A /* BigUInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3872AA04CA85062612E53BF4 /* BigUInt.swift */; };
+		D9B11746B916769B0832CACC /* TLV8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F13BAD1B578466EA1DC20C4 /* TLV8.swift */; };
 		E6D9013A4707A6248AA37D80 /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605F3AFDAAB40C71333DD362 /* RemoteControlView.swift */; };
 		EABE228725C5166BA7780FC6 /* AppsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF5FF93FB01DD316F3FE6D /* AppsGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02DF12E9FAE333E5A0422A5C /* TVKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVKeyboardView.swift; sourceTree = "<group>"; };
+		090A1632FC17997D9529F950 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0B3D739D67A3729B2349963B /* SonyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonyProtocol.swift; sourceTree = "<group>"; };
 		0F1C3F7990B9CB9B76192619 /* TabletRemoteControl.storekit */ = {isa = PBXFileReference; path = TabletRemoteControl.storekit; sourceTree = "<group>"; };
 		15074854B862AC5BB52A1464 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -46,13 +53,16 @@
 		26AF5FF93FB01DD316F3FE6D /* AppsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGridView.swift; sourceTree = "<group>"; };
 		2716BA9196E4A15DF332F12E /* SamsungProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamsungProtocol.swift; sourceTree = "<group>"; };
 		2C2A1A337D2F9E60B821A1F5 /* FeatureGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGate.swift; sourceTree = "<group>"; };
+		3872AA04CA85062612E53BF4 /* BigUInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigUInt.swift; sourceTree = "<group>"; };
 		5BD180D27E1A0CD805484D97 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5E8DF0902A2917E1931EF1D1 /* ADBProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADBProtocol.swift; sourceTree = "<group>"; };
 		5EFB6E59EB9F67ACD3BEED87 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5F13BAD1B578466EA1DC20C4 /* TLV8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLV8.swift; sourceTree = "<group>"; };
 		605F3AFDAAB40C71333DD362 /* RemoteControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlView.swift; sourceTree = "<group>"; };
 		61AA321380BDEDF74F71C36B /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
 		6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletRemoteControlApp.swift; sourceTree = "<group>"; };
 		70405CA96B592D7E99374B1E /* PhilipsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilipsProtocol.swift; sourceTree = "<group>"; };
+		871A6FB12E5BDEB3A01F2835 /* PairingPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingPINView.swift; sourceTree = "<group>"; };
 		94EB4759D16C8972F7A5B7D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9AD24C4ACB6C058BA2309093 /* RemoteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommand.swift; sourceTree = "<group>"; };
 		9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTouchpadView.swift; sourceTree = "<group>"; };
@@ -60,9 +70,11 @@
 		9F8A842FA6009CCE10970EDA /* LGProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGProtocol.swift; sourceTree = "<group>"; };
 		A555248E94139E703E600226 /* TVProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProtocol.swift; sourceTree = "<group>"; };
 		AAB190AC297ED1C70AC6CA52 /* TabletRemoteControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TabletRemoteControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C05815501034D6ABAD9E58B1 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TabletRemoteControl/Assets.xcassets; sourceTree = "<group>"; };
 		C4F56D94CBE14D0C16DA2E37 /* TVConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVConnectionManager.swift; sourceTree = "<group>"; };
 		CAE3A63596D1B8186A84D78E /* TVDiscoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDiscoveryService.swift; sourceTree = "<group>"; };
-		D96138DAC0CABDECDF9DFED2 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TabletRemoteControl/Assets.xcassets; sourceTree = "<group>"; };
+		CCBD907AC55E4F12A4314F2C /* SRPHAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPHAP.swift; sourceTree = "<group>"; };
+		E1C318D5431251DFB9928843 /* AppleTVProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTVProtocol.swift; sourceTree = "<group>"; };
 		F299AC22F21570572ABB1FCB /* PremiumBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumBannerView.swift; sourceTree = "<group>"; };
 		F5A06464969366FE72CD2813 /* TVProtocolFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProtocolFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +110,7 @@
 			children = (
 				A555248E94139E703E600226 /* TVProtocol.swift */,
 				81656F946A7E11A61FFA66E3 /* ADB */,
+				5E5BCF3463C9C043369D5E1D /* AppleTV */,
 				87D2C780E3ADD13408F95475 /* LG */,
 				9DE0B29C1E19E1CD12D703FA /* Philips */,
 				EBE2AB537B60C5677C214B3A /* Roku */,
@@ -127,6 +140,17 @@
 				9BF5C5717E465B05165F95AA /* TVTouchpadView.swift */,
 			);
 			path = Touchpad;
+			sourceTree = "<group>";
+		};
+		5E5BCF3463C9C043369D5E1D /* AppleTV */ = {
+			isa = PBXGroup;
+			children = (
+				E1C318D5431251DFB9928843 /* AppleTVProtocol.swift */,
+				3872AA04CA85062612E53BF4 /* BigUInt.swift */,
+				CCBD907AC55E4F12A4314F2C /* SRPHAP.swift */,
+				5F13BAD1B578466EA1DC20C4 /* TLV8.swift */,
+			);
+			path = AppleTV;
 			sourceTree = "<group>";
 		};
 		63912685CFF9BA6367C92114 /* Onboarding */ = {
@@ -167,6 +191,7 @@
 			children = (
 				5BD180D27E1A0CD805484D97 /* AppState.swift */,
 				94EB4759D16C8972F7A5B7D9 /* ContentView.swift */,
+				090A1632FC17997D9529F950 /* SceneDelegate.swift */,
 				0F1C3F7990B9CB9B76192619 /* TabletRemoteControl.storekit */,
 				6EDA1687C828DF0BCC361D1C /* TabletRemoteControlApp.swift */,
 			);
@@ -220,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				61AA321380BDEDF74F71C36B /* DeviceListView.swift */,
+				871A6FB12E5BDEB3A01F2835 /* PairingPINView.swift */,
 			);
 			path = DeviceList;
 			sourceTree = "<group>";
@@ -229,7 +255,7 @@
 			children = (
 				3A5574AC944B1B032C3948B6 /* Sources */,
 				91C488167162E9FFB0154A66 /* Products */,
-				D96138DAC0CABDECDF9DFED2 /* Assets.xcassets */,
+				C05815501034D6ABAD9E58B1 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,7 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05EA6E22CB87A8BAB4D009EC /* TabletRemoteControl.storekit in Resources */,
-				6AD5D6E2A239F855E080ACD1 /* Assets.xcassets in Resources */,
+				A7B7EBCDB63E69F494C8C702 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,21 +362,27 @@
 			files = (
 				162B48DDCF2C748758767EB9 /* ADBProtocol.swift in Sources */,
 				5CD03D3CA8E1F91892726176 /* AppState.swift in Sources */,
+				236AFA033E2972AC1280B526 /* AppleTVProtocol.swift in Sources */,
 				EABE228725C5166BA7780FC6 /* AppsGridView.swift in Sources */,
+				D42B9B4A1CC9EC20014B8B6A /* BigUInt.swift in Sources */,
 				33DBD5262B97F04C97F56A9C /* ContentView.swift in Sources */,
 				98F688608753CF7F4133CB90 /* DeviceListView.swift in Sources */,
 				61E4F1067B01A159E0D2B5E1 /* FeatureGate.swift in Sources */,
 				43CBFCA0C6FA176E13367CA9 /* LGProtocol.swift in Sources */,
 				18264E8A10A0A76310529B2F /* OnboardingView.swift in Sources */,
+				B6611568729E59E50F13C30B /* PairingPINView.swift in Sources */,
 				CBA36354713F5D34CD785C9F /* PaywallView.swift in Sources */,
 				C58AA2553118DBECDCD2DF3B /* PhilipsProtocol.swift in Sources */,
 				287564A289942897D101EBA0 /* PremiumBannerView.swift in Sources */,
 				CC271FD4D9AC306FD0556A6D /* RemoteCommand.swift in Sources */,
 				E6D9013A4707A6248AA37D80 /* RemoteControlView.swift in Sources */,
 				504227E9294A898B70203654 /* RokuProtocol.swift in Sources */,
+				C6C4591B39B3CEABD9F2F169 /* SRPHAP.swift in Sources */,
 				7F9E07E39BBCC88379F58DC5 /* SamsungProtocol.swift in Sources */,
+				69C9787643911ADC82DBF382 /* SceneDelegate.swift in Sources */,
 				A32ECEA255939E61602FC073 /* SonyProtocol.swift in Sources */,
 				347E24ABA8C8EF1EB24DBC46 /* SubscriptionService.swift in Sources */,
+				D9B11746B916769B0832CACC /* TLV8.swift in Sources */,
 				39F46670AAE4C2FB172C5ECD /* TVConnectionManager.swift in Sources */,
 				1CB58BD67FAF4D98F890566B /* TVDevice.swift in Sources */,
 				1F24B755EC834993AD6EDC0F /* TVDiscoveryService.swift in Sources */,
@@ -378,7 +410,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ipadremotecontrolapp;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -395,7 +427,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ipadremotecontrolapp;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};

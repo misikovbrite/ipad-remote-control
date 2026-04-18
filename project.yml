@@ -34,7 +34,7 @@ targets:
         CFBundleIdentifier: "ipadremotecontrolapp"
         CFBundleName: TabletRemoteControl
         CFBundleShortVersionString: "1.1"
-        CFBundleVersion: "2"
+        CFBundleVersion: "6"
         LSRequiresIPhoneOS: YES
         UIRequiresFullScreen: YES
         UIDeviceFamily:
@@ -60,6 +60,7 @@ targets:
       base:
         INFOPLIST_FILE: TabletRemoteControl/Sources/App/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: "ipadremotecontrolapp"
+        TARGETED_DEVICE_FAMILY: "2"
 
 schemes:
   TabletRemoteControl:
